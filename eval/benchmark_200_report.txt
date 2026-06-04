@@ -2,22 +2,22 @@
 Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
-  Easy    : primary=85% / urgency=65% / ICD3=82% / rf_recall=53% / diff_cov=35%
-  Medium  : primary=59% / urgency=63% / ICD3=57% / rf_recall=30% / diff_cov=32%
-  Hard    : primary=66% / urgency=72% / ICD3=64% / rf_recall=25% / diff_cov=18%
+  Easy    : primary=87% / urgency=63% / ICD3=83% / rf_recall=53% / diff_cov=37%
+  Medium  : primary=62% / urgency=67% / ICD3=59% / rf_recall=32% / diff_cov=31%
+  Hard    : primary=66% / urgency=78% / ICD3=62% / rf_recall=26% / diff_cov=20%
 
-Overall: primary=68% / urgency=66% / ICD3=66% / rf_recall=36% / diff_cov=30%
+Overall: primary=70% / urgency=68% / ICD3=67% / rf_recall=37% / diff_cov=30%
 
-Top prediction errors (10 of 63 failed cases):
-  1. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
-  2. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
-  3. 化膿性関節炎 → predicted as '精査必要' (1 case)
-  4. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
-  5. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
-  6. コンパートメント症候群 → predicted as '多発外傷+出血性ショック' (1 case)
-  7. ギラン・バレー症候群 → predicted as '精査必要' (1 case)
-  8. 腸閉塞 → predicted as '急性虫垂炎' (1 case)
-  9. 一過性脳虚血発作 → predicted as '急性脳梗塞' (1 case)
-  10. 悪性リンパ腫 → predicted as '肺結核' (1 case)
+Top prediction errors (10 of 59 failed cases):
+  1. 高血圧性脳症 → predicted as '精査必要' (2 cases)
+  2. 熱射病 → predicted as '精査必要' (2 cases)
+  3. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
+  4. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  5. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
+  6. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
+  7. コンパートメント症候群 → predicted as '多発外傷+出血性ショック' (1 case)
+  8. ギラン・バレー症候群 → predicted as '精査必要' (1 case)
+  9. 腸閉塞 → predicted as '急性虫垂炎' (1 case)
+  10. 一過性脳虚血発作 → predicted as '急性脳梗塞' (1 case)
 
 Generated: benchmark_results.json

@@ -455,6 +455,24 @@ KEYWORD_PATCHES.update({
 })
 
 
+KEYWORD_PATCHES.update({
+    # 残り17件フォールバック解消パッチ
+    "SEPTIC_ARTHRITIS": {"add_keywords": ["右膝関節単発性炎", "膝関節 WBC16000 CRP高値", "単関節 発熱 WBC"], "min_match": 1},
+    "PE": {"add_keywords": ["腹部手術後3日", "術後3日目 息切れ", "腹部手術後 SpO2低下"], "min_match": 1},
+    # ECLAMPSIA: min_match=2 を維持（高血圧単体でマッチしないよう）
+    "ECLAMPSIA": {"add_keywords": ["タンパク尿 下肢浮腫 妊娠", "妊娠32週 血圧160", "妊娠 タンパク尿 視野障害"], "min_match": 2},
+    "HEAT_STROKE": {"add_keywords": ["屋外活動後 体温40", "無汗 体温40", "皮膚乾燥 屋外 意識障害"], "min_match": 1},
+    "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["MRI後頭葉白質変化 痙攣", "慢性腎不全 高血圧 MRI白質", "嘔吐 血圧上昇 MRI白質"], "min_match": 1},
+    "CONGENITAL_HEART_DISEASE_CYANOSIS": {"add_keywords": ["出生後の急激なチアノーゼ", "出生直後 チアノーゼ", "新生児 頸静脈怒張 チアノーゼ"], "min_match": 1},
+    "ACUTE_GLAUCOMA": {"add_keywords": ["前房出血 眼痛", "眼圧80", "角膜透明感消失 眼痛", "急性失明 眼痛 眼圧"], "min_match": 1},
+    "ALPORT_SYNDROME": {"add_keywords": ["感音難聴 タンパク尿", "腎機能低下 難聴 血尿", "母方 腎疾患 難聴", "若年男性 難聴 腎不全"], "min_match": 1},
+    "IDIOPATHIC_ICP": {"add_keywords": ["視乳頭浮腫 持続頭痛", "MRI正常 乳頭浮腫", "髄液圧上昇", "視乳頭浮腫 視力低下 頭痛"], "min_match": 1},
+    "ANGIOEDEMA_ACE": {"add_keywords": ["喉頭浮腫 ACE", "ACE阻害薬 気道閉塞", "喘鳴 飲み込み困難 ACE"], "min_match": 1},
+    "TTP": {"add_keywords": ["神経症状 溶血性貧血 発熱", "血小板3万 溶血 神経症状", "破砕赤血球 神経症状"], "min_match": 1},
+    "OPPORTUNISTIC_INFECTION": {"add_keywords": ["日和見感染", "免疫不全 発熱 腹痛", "HIV 腹痛 下痢"], "min_match": 1},
+})
+
+
 def apply_patches(rules: list) -> list:
     """EXTENDED_DD_RULES にキーワードパッチを適用して返す"""
     for rule in rules:
