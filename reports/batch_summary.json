@@ -1,0 +1,112 @@
+[
+  {
+    "case_id": "case_01",
+    "patient": "65歳男性",
+    "chief_complaint": "胸痛・冷汗",
+    "primary_dx": "急性冠症候群（ACS）",
+    "probability": 0.695,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_01.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_01.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_01.json"
+  },
+  {
+    "case_id": "case_02",
+    "patient": "72歳女性",
+    "chief_complaint": "呼吸困難・発熱",
+    "primary_dx": "市中肺炎（CAP）",
+    "probability": 0.7,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_02.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_02.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_02.json"
+  },
+  {
+    "case_id": "case_03",
+    "patient": "45歳男性",
+    "chief_complaint": "突然の激烈な頭痛",
+    "primary_dx": "くも膜下出血（SAH）",
+    "probability": 0.735,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_03.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_03.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_03.json"
+  },
+  {
+    "case_id": "case_04",
+    "patient": "28歳女性",
+    "chief_complaint": "蜂刺され後の全身発疹・息苦しさ",
+    "primary_dx": "アナフィラキシー",
+    "probability": 0.854,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_04.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_04.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_04.json"
+  },
+  {
+    "case_id": "case_05",
+    "patient": "58歳男性",
+    "chief_complaint": "右片麻痺・構音障害",
+    "primary_dx": "急性脳梗塞",
+    "probability": 0.743,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_05.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_05.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_05.json"
+  },
+  {
+    "case_id": "case_06",
+    "patient": "55歳男性",
+    "chief_complaint": "発熱・意識障害・低血圧",
+    "primary_dx": "精査必要",
+    "probability": 0.5,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_06.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_06.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_06.json"
+  },
+  {
+    "case_id": "case_07",
+    "patient": "62歳女性",
+    "chief_complaint": "急性腹痛・嘔吐",
+    "primary_dx": "急性膵炎",
+    "probability": 0.785,
+    "urgency": "urgent",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_07.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_07.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_07.json"
+  },
+  {
+    "case_id": "case_08",
+    "patient": "38歳男性",
+    "chief_complaint": "突然の胸痛・呼吸困難",
+    "primary_dx": "肺塞栓症（PE）",
+    "probability": 0.72,
+    "urgency": "urgent",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_08.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_08.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_08.json"
+  },
+  {
+    "case_id": "case_09",
+    "patient": "70歳男性",
+    "chief_complaint": "背部裂けるような痛み",
+    "primary_dx": "急性大動脈解離",
+    "probability": 0.79,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_09.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_09.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_09.json"
+  },
+  {
+    "case_id": "case_10",
+    "patient": "19歳男性",
+    "chief_complaint": "運動後の高血糖・嘔吐・意識混濁",
+    "primary_dx": "糖尿病性ケトアシドーシス（DKA）",
+    "probability": 0.772,
+    "urgency": "immediate",
+    "text_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_10.txt",
+    "html_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_10.html",
+    "json_file": "/Users/matsumura-tao/sources/imai-lab/medical-dd-llm/reports/case_10.json"
+  }
+]

@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "72歳女性",
+  "chief_complaint": "呼吸困難・発熱",
+  "vitals_raw": "BP 100/65, HR 105, SpO2 88%, RR 28, 体温 38.5",
+  "vital_assessment": {
+    "severity": "critical",
+    "flags": [
+      {
+        "param": "spo2",
+        "message": "酸素飽和度 88.0%（危機的低値）"
+      },
+      {
+        "param": "rr",
+        "message": "呼吸数 28.0/min（高値）"
+      },
+      {
+        "param": "temp",
+        "message": "体温 38.5℃（高値）"
+      },
+      {
+        "param": "shock_index",
+        "message": "ショック指数 1.05（≥1.0: ショック疑い — 輸液・緊急評価を推奨）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 2点 [呼吸数 28.0/min ≥22、SBP 100.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "市中肺炎（CAP）",
+    "probability": 0.7,
+    "basis": "呼吸困難・発熱 + 咳嗽, 発熱38.5℃, 酸素飽和度低下",
+    "icd10": {
+      "code": "J18.9",
+      "name_ja": "市中肺炎（CAP）",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "肺結核",
+      "probability": 0.12,
+      "icd10": "A15.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "非定型肺炎",
+      "probability": 0.1,
+      "icd10": "J22",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "肺癌+閉塞性肺炎",
+      "probability": 0.05,
+      "icd10": "C34.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "好酸球性肺炎",
+      "probability": 0.03,
+      "icd10": "J82",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 2,
+      "interpretation": "院内死亡リスク 3倍以上。Sepsis-3 基準に基づく臓器障害を疑う。"
+    }
+  },
+  "lab_flags": [
+    {
+      "name": "C反応性蛋白",
+      "value": 12.0,
+      "status": "critical_high",
+      "unit": "mg/dL",
+      "message": "C反応性蛋白 12.0mg/dL — 高度 CRP 上昇: 重篤な感染・敗血症・膠原病を疑う"
+    },
+    {
+      "name": "白血球数",
+      "value": 18000.0,
+      "status": "high",
+      "unit": "/μL",
+      "message": "白血球数 18000.0/μL — 白血球増多: 感染・炎症・血液疾患を考慮"
+    },
+    {
+      "name": "プロカルシトニン",
+      "value": 2.8,
+      "status": "high",
+      "unit": "ng/mL",
+      "message": "プロカルシトニン 2.8ng/mL — PCT 上昇: 細菌感染・敗血症を示唆"
+    }
+  ],
+  "red_flags": [
+    "CURB-65スコアで入院適応判定",
+    "結核疑いは陰圧個室+N95"
+  ],
+  "next_steps": [
+    "胸部X線",
+    "採血(CBC/CRP/PCT)",
+    "喀痰培養",
+    "CURB-65算定"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": []
+}

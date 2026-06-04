@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "45歳男性",
+  "chief_complaint": "突然の激烈な頭痛",
+  "vitals_raw": "BP 170/100, HR 85, SpO2 98%, RR 16, 体温 37.2",
+  "vital_assessment": {
+    "severity": "normal",
+    "flags": []
+  },
+  "primary_diagnosis": {
+    "disease": "くも膜下出血（SAH）",
+    "probability": 0.735,
+    "basis": "突然の激烈な頭痛 + 雷鳴頭痛, 嘔吐, 項部硬直",
+    "icd10": {
+      "code": "I60.9",
+      "name_ja": "くも膜下出血（SAH）",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "細菌性髄膜炎",
+      "probability": 0.122,
+      "icd10": "G00.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "脳内出血",
+      "probability": 0.07,
+      "icd10": "I61.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "偏頭痛",
+      "probability": 0.074,
+      "icd10": "G43.9",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 0,
+      "interpretation": "qSOFA 陰性でも敗血症を除外できない。臨床的判断を優先すること。"
+    }
+  },
+  "lab_flags": [],
+  "red_flags": [
+    "CT陰性でもLP必須(キサントクロミア)",
+    "SAH否定まで緊急扱い"
+  ],
+  "next_steps": [
+    "頭部単純CT",
+    "LP(CT陰性時)",
+    "脳外科コール"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": []
+}

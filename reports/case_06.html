@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>臨床症例報告</title>
+  <style>
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 860px;
+       margin: 30px auto; padding: 20px; background: #f7f9fc; color: #2c3e50; }
+h1   { background: #2c3e50; color: white; padding: 12px 20px;
+       border-radius: 6px; font-size: 1.3em; margin: 0 0 20px; }
+h2   { border-left: 4px solid #3498db; padding-left: 10px;
+       color: #2c3e50; font-size: 1.0em; margin: 20px 0 8px; }
+.meta     { color: #7f8c8d; font-size: 0.88em; margin-bottom: 18px; }
+.critical { background: #fdecea; border: 1px solid #e74c3c; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.warning  { background: #fef9e7; border: 1px solid #f39c12; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.normal   { background: #eafaf1; border: 1px solid #27ae60; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.diagnosis-primary { background: #ebf5fb; border: 1px solid #3498db;
+                     border-radius: 4px; padding: 10px 14px; margin: 6px 0; }
+.diagnosis-diff    { padding: 4px 14px; color: #555; font-size: 0.9em; }
+.next-step { background: #eafaf1; padding: 5px 12px; margin: 3px 0;
+             border-radius: 3px; font-size: 0.9em; }
+.protocol-step { display: flex; gap: 12px; padding: 5px 0;
+                 border-bottom: 1px solid #eee; font-size: 0.9em; }
+.timing { background: #3498db; color: white; padding: 2px 8px;
+          border-radius: 10px; font-size: 0.8em; white-space: nowrap;
+          align-self: center; }
+.badge-critical { color: #e74c3c; font-weight: bold; }
+.badge-high     { color: #e67e22; font-weight: bold; }
+.badge-low      { color: #3498db; font-weight: bold; }
+.badge-normal   { color: #27ae60; }
+.urgency        { display: inline-block; padding: 6px 14px; border-radius: 4px;
+                  font-weight: bold; font-size: 1.0em; }
+.urgency-immediate { background: #fdecea; color: #e74c3c; }
+.urgency-urgent    { background: #fef9e7; color: #e67e22; }
+.urgency-routine   { background: #eafaf1; color: #27ae60; }
+.score-box { background: white; border: 1px solid #ddd; border-radius: 4px;
+             padding: 8px 14px; display: inline-block; margin: 4px; min-width: 160px; }
+.score-name  { font-size: 0.8em; color: #7f8c8d; }
+.score-value { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
+</style>
+</head>
+<body>
+<h1>臨床症例報告</h1>
+<div class="meta">
+  生成日時: 2026-06-04 23:02 &nbsp;|&nbsp;
+  患者: 55歳男性 &nbsp;|&nbsp;
+  主訴: 発熱・意識障害・低血圧
+</div>
+
+<h2>バイタルサイン評価</h2>
+<div class="critical">重症度: <strong>CRITICAL</strong></div>
+<div class="critical">⚠ 収縮期血圧 85.0mmHg（低値）</div>
+<div class="critical">⚠ 拡張期血圧 55.0mmHg（低値）</div>
+<div class="critical">⚠ 心拍数 120.0/min（高値）</div>
+<div class="critical">⚠ 酸素飽和度 92.0%（低値）</div>
+<div class="critical">⚠ 呼吸数 26.0/min（高値）</div>
+<div class="critical">⚠ 体温 39.5℃（高値）</div>
+<div class="critical">⚠ ショック指数 1.41（≥1.0: ショック疑い — 輸液・緊急評価を推奨）</div>
+<div class="critical">⚠ qSOFA 2点 [呼吸数 26.0/min ≥22、SBP 85.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急</div>
+
+<h2>鑑別診断</h2>
+<div class="diagnosis-primary">
+  <strong>第一診断: 精査必要</strong> &mdash; 確率 50%
+  <br><small style="color:#555">根拠: 症状パターンが特定できません</small>
+</div>
+
+
+<h2>リスクスコア</h2>
+<p style='color:#999'>スコア情報なし</p>
+
+<h2>検査値</h2>
+<div style="padding:3px 0"><span class="badge-normal">[CRITICAL_HIGH]</span> 乳酸値: 4.2 mmol/L</div><div style="padding:3px 0"><span class="badge-normal">[CRITICAL_HIGH]</span> プロカルシトニン: 15.0 ng/mL</div><div style="padding:3px 0"><span class="badge-high">[HIGH]</span> 白血球数: 22000.0 /μL</div><div style="padding:3px 0"><span class="badge-high">[HIGH]</span> クレアチニン: 2.3 mg/dL</div>
+
+<h2>推奨事項</h2>
+<div class="critical">⚠ 専門医への紹介を検討</div>
+<div class="critical">⚠ バイタル安定化優先</div>
+<div class="next-step">✓ 詳細な病歴聴取</div>
+<div class="next-step">✓ バイタル監視</div>
+<p style="margin-top:10px">緊急度: <span class="urgency urgency-immediate">🔴 即時対応</span></p>
+
+<h2>治療プロトコル</h2><p>標準プロトコルを参照のこと</p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin-top:30px">
+<p style="color:#aaa;font-size:0.8em;text-align:center">
+  本レポートは診断支援AIによる参考情報です。最終診断は医師が行ってください。
+</p>
+</body>
+</html>

@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "38歳男性",
+  "chief_complaint": "突然の胸痛・呼吸困難",
+  "vitals_raw": "BP 125/80, HR 115, SpO2 91%, RR 24, 体温 36.9",
+  "vital_assessment": {
+    "severity": "warning",
+    "flags": [
+      {
+        "param": "spo2",
+        "message": "酸素飽和度 91.0%（低値）"
+      },
+      {
+        "param": "rr",
+        "message": "呼吸数 24.0/min（高値）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 1点 [呼吸数 24.0/min ≥22]"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "肺塞栓症（PE）",
+    "probability": 0.72,
+    "basis": "突然の胸痛・呼吸困難 + 胸膜性胸痛, 呼吸困難, 頻脈",
+    "icd10": {
+      "code": "I26.9",
+      "name_ja": "肺塞栓症（PE）",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "急性冠症候群",
+      "probability": 0.12,
+      "icd10": "I21.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "気胸",
+      "probability": 0.08,
+      "icd10": "J93.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "胸膜炎",
+      "probability": 0.08,
+      "icd10": "R09.1",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 1,
+      "interpretation": "低リスクだが感染源の管理と経過観察を怠らないこと。"
+    }
+  },
+  "lab_flags": [
+    {
+      "name": "Dダイマー",
+      "value": 3.8,
+      "status": "high",
+      "unit": "μg/mL FEU",
+      "message": "Dダイマー 3.8μg/mL FEU — D ダイマー上昇: 肺塞栓・深部静脈血栓・播種性血管内凝固 (DIC) を考慮"
+    }
+  ],
+  "red_flags": [
+    "Wellsスコア+D-dimer評価",
+    "CTPA（CT肺動脈造影）"
+  ],
+  "next_steps": [
+    "Wells score算出",
+    "D-dimer",
+    "CTPA",
+    "抗凝固療法開始"
+  ],
+  "urgency": "urgent",
+  "protocol_steps": [
+    {
+      "timing": "0-10min",
+      "action": "PE 疑い → 安定化・酸素投与",
+      "dose": "高流量酸素。大量 PE では積極的輸液は回避（右室過負荷悪化）",
+      "priority": 1
+    },
+    {
+      "timing": "0-30min",
+      "action": "診断確認（CT 肺動脈造影）",
+      "dose": "CTPA が第一選択。不安定 → エコーで右室拡大を確認しながら経験的治療",
+      "priority": 1
+    },
+    {
+      "timing": "0-30min",
+      "action": "抗凝固療法 開始（非大量 PE）",
+      "dose": "ヘパリン 80 IU/kg IV ボーラス → 18 IU/kg/h 持続 または リバーロキサバン 15 mg PO BID × 21 日",
+      "priority": 1
+    },
+    {
+      "timing": "0-60min",
+      "action": "全身溶栓療法（大量 PE）",
+      "dose": "アルテプラーゼ 100 mg IV 2 時間で投与（50 mg ボーラス可）",
+      "priority": 1
+    },
+    {
+      "timing": "30-60min",
+      "action": "外科的肺動脈血栓摘除術 / カテーテル血栓破砕",
+      "dose": null,
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "昇圧薬（大量 PE + 低血圧）",
+      "dose": "ノルエピネフリン 0.01-3.0 μg/kg/min。ドブタミン（右室不全）2.5-10 μg/kg/min",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "経口抗凝固薬への移行（安定後）",
+      "dose": "DOAC（アピキサバン・リバーロキサバン）推奨。最低 3 ヶ月間（再発・癌合併では長期）",
+      "priority": 3
+    },
+    {
+      "timing": "ongoing",
+      "action": "誘因検索",
+      "dose": "DVT・悪性腫瘍（隠蔽癌）・血栓性素因スクリーニング（初発・若年・再発例）",
+      "priority": 3
+    }
+  ]
+}

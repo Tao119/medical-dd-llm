@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>臨床症例報告</title>
+  <style>
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 860px;
+       margin: 30px auto; padding: 20px; background: #f7f9fc; color: #2c3e50; }
+h1   { background: #2c3e50; color: white; padding: 12px 20px;
+       border-radius: 6px; font-size: 1.3em; margin: 0 0 20px; }
+h2   { border-left: 4px solid #3498db; padding-left: 10px;
+       color: #2c3e50; font-size: 1.0em; margin: 20px 0 8px; }
+.meta     { color: #7f8c8d; font-size: 0.88em; margin-bottom: 18px; }
+.critical { background: #fdecea; border: 1px solid #e74c3c; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.warning  { background: #fef9e7; border: 1px solid #f39c12; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.normal   { background: #eafaf1; border: 1px solid #27ae60; border-radius: 4px;
+            padding: 6px 12px; margin: 4px 0; font-size: 0.9em; }
+.diagnosis-primary { background: #ebf5fb; border: 1px solid #3498db;
+                     border-radius: 4px; padding: 10px 14px; margin: 6px 0; }
+.diagnosis-diff    { padding: 4px 14px; color: #555; font-size: 0.9em; }
+.next-step { background: #eafaf1; padding: 5px 12px; margin: 3px 0;
+             border-radius: 3px; font-size: 0.9em; }
+.protocol-step { display: flex; gap: 12px; padding: 5px 0;
+                 border-bottom: 1px solid #eee; font-size: 0.9em; }
+.timing { background: #3498db; color: white; padding: 2px 8px;
+          border-radius: 10px; font-size: 0.8em; white-space: nowrap;
+          align-self: center; }
+.badge-critical { color: #e74c3c; font-weight: bold; }
+.badge-high     { color: #e67e22; font-weight: bold; }
+.badge-low      { color: #3498db; font-weight: bold; }
+.badge-normal   { color: #27ae60; }
+.urgency        { display: inline-block; padding: 6px 14px; border-radius: 4px;
+                  font-weight: bold; font-size: 1.0em; }
+.urgency-immediate { background: #fdecea; color: #e74c3c; }
+.urgency-urgent    { background: #fef9e7; color: #e67e22; }
+.urgency-routine   { background: #eafaf1; color: #27ae60; }
+.score-box { background: white; border: 1px solid #ddd; border-radius: 4px;
+             padding: 8px 14px; display: inline-block; margin: 4px; min-width: 160px; }
+.score-name  { font-size: 0.8em; color: #7f8c8d; }
+.score-value { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
+</style>
+</head>
+<body>
+<h1>臨床症例報告</h1>
+<div class="meta">
+  生成日時: 2026-06-04 23:02 &nbsp;|&nbsp;
+  患者: 62歳女性 &nbsp;|&nbsp;
+  主訴: 急性腹痛・嘔吐
+</div>
+
+<h2>バイタルサイン評価</h2>
+<div class="warning">重症度: <strong>WARNING</strong></div>
+<div class="critical">⚠ 体温 38.2℃（高値）</div>
+
+<h2>鑑別診断</h2>
+<div class="diagnosis-primary">
+  <strong>第一診断: 急性膵炎</strong> [K85.9] &mdash; 確率 78%
+  <br><small style="color:#555">根拠: 急性腹痛・嘔吐 + 上腹部痛, 嘔吐, 発熱38.2℃</small>
+</div>
+<div class="diagnosis-diff">2位: 消化性潰瘍穿孔 (9%)</div>
+<div class="diagnosis-diff">3位: SMA閉塞 (6%)</div>
+<div class="diagnosis-diff">4位: 急性胆嚢炎 (4%)</div>
+
+
+<h2>リスクスコア</h2>
+<div class="score-box"><div class="score-name">qSOFA</div><div class="score-value">0</div><div style="font-size:0.8em;color:#555">qSOFA 陰性でも敗血症を除外できない。臨床的判断を優先すること。</div></div>
+
+<h2>検査値</h2>
+<div style="padding:3px 0"><span class="badge-normal">[CRITICAL_HIGH]</span> アミラーゼ: 850.0 U/L</div><div style="padding:3px 0"><span class="badge-normal">[CRITICAL_HIGH]</span> リパーゼ: 1200.0 U/L</div><div style="padding:3px 0"><span class="badge-high">[HIGH]</span> 白血球数: 14000.0 /μL</div>
+
+<h2>推奨事項</h2>
+<div class="critical">⚠ Ranson基準/BISAPスコアで重症度評価</div>
+<div class="critical">⚠ SMA閉塞は死亡率80%以上</div>
+<div class="next-step">✓ 採血(アミラーゼ/リパーゼ/CRP)</div>
+<div class="next-step">✓ 腹部CT(造影)</div>
+<div class="next-step">✓ 禁食+輸液</div>
+<div class="next-step">✓ Ranson評価</div>
+<p style="margin-top:10px">緊急度: <span class="urgency urgency-urgent">🟡 緊急</span></p>
+
+<h2>治療プロトコル（急性喘息発作標準）</h2>
+<div class="protocol-step"><span class="timing">0-10min</span><span>SABA 吸入（サルブタモール）<br><small style='color:#777'>サルブタモール 2.5-5 mg ネブライザー または MDI 4-8 puff（スペーサー使用）</small></span></div>
+<div class="protocol-step"><span class="timing">0-10min</span><span>酸素投与<br><small style='color:#777'>SpO2 ≥94% を目標。過剰酸素は高 CO2 血症の患者では注意</small></span></div>
+<div class="protocol-step"><span class="timing">0-20min</span><span>全身性コルチコステロイド<br><small style='color:#777'>プレドニゾロン 40-50 mg PO または メチルプレドニゾロン 80-125 mg IV（重症）</small></span></div>
+<div class="protocol-step"><span class="timing">0-20min</span><span>イプラトロピウム 吸入（重症時追加）<br><small style='color:#777'>イプラトロピウム 0.5 mg ネブライザー（最初の 3 回まで SABA と混合）</small></span></div>
+<div class="protocol-step"><span class="timing">20-60min</span><span>SABA 反復（20 分ごと × 3 回）<br><small style='color:#777'>サルブタモール 2.5-5 mg ネブライザー 20 分ごと（重症: 持続ネブライザー 10-15 mg/h）</small></span></div>
+<div class="protocol-step"><span class="timing">30-60min</span><span>硫酸マグネシウム IV（重症・SABA 反応不良）<br><small style='color:#777'>MgSO4 2 g IV 20 分かけて投与（低 Mg 不要、気管支拡張効果）</small></span></div>
+
+
+<hr style="border:none;border-top:1px solid #ddd;margin-top:30px">
+<p style="color:#aaa;font-size:0.8em;text-align:center">
+  本レポートは診断支援AIによる参考情報です。最終診断は医師が行ってください。
+</p>
+</body>
+</html>

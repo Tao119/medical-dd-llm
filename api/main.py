@@ -178,3 +178,80 @@ def drug_check_endpoint(inp: DrugCheckInput):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8765)
+
+
+# ── 追加エンドポイント ─────────────────────────────────────────
+
+from clinical.pediatric import PediatricVitals, assess_pediatric_vitals, pediatric_drug_dose, holliday_segar
+from clinical.treatment_protocols import get_protocol, format_protocol_text
+from clinical.triage import triage as triage_fn
+from clinical.drug_dosing import calc_dose, format_dose_result
+
+
+class PedVitalsInput(BaseModel):
+    age_months: int
+    weight_kg: Optional[float] = None
+    sbp: Optional[float] = None
+    hr: Optional[float] = None
+    rr: Optional[float] = None
+    spo2: Optional[float] = None
+    temp: Optional[float] = None
+
+@app.post("/pediatric/vitals")
+def ped_vitals(inp: PedVitalsInput):
+    pv = PediatricVitals(**inp.model_dump())
+    return assess_pediatric_vitals(pv)
+
+@app.post("/pediatric/dose")
+def ped_dose(drug: str, age_months: int, weight_kg: float):
+    result = pediatric_drug_dose(drug, age_months=age_months, weight_kg=weight_kg)
+    return {
+        "drug": result.drug, "dose": result.calculated_dose,
+        "route": result.route, "frequency": result.frequency,
+        "max_dose": result.max_dose, "notes": result.notes
+    }
+
+@app.post("/pediatric/fluid")
+def ped_fluid(weight_kg: float):
+    f = holliday_segar(weight_kg)
+    return {"daily_mL": f.daily_ml, "hourly_mL_h": f.hourly_rate_ml_h,
+            "detail": f.calculation_detail}
+
+@app.get("/protocol/{diagnosis}")
+def get_treatment_protocol(diagnosis: str):
+    proto = get_protocol(diagnosis)
+    if not proto:
+        raise HTTPException(status_code=404, detail=f"Protocol not found: {diagnosis}")
+    return {
+        "diagnosis": proto.diagnosis, "icd10": proto.icd10,
+        "key_principle": proto.key_principle,
+        "steps": [{"timing": s.timing, "action": s.action, "dose": s.dose,
+                   "priority": s.priority} for s in proto.steps],
+        "monitoring": proto.monitoring, "goals": proto.goals,
+        "pitfalls": proto.pitfalls,
+        "formatted": format_protocol_text(proto),
+    }
+
+class TriageInput(BaseModel):
+    chief_complaint: str
+    symptoms: List[str] = []
+    vitals: str = ""
+    pain_score: int = 0
+
+@app.post("/triage")
+def triage_endpoint(inp: TriageInput):
+    case = {"chief_complaint": inp.chief_complaint, "symptoms": inp.symptoms}
+    result = triage_fn(case, vitals_str=inp.vitals, pain_score=inp.pain_score)
+    return {"level": result.level, "color": result.color, "name_ja": result.name_ja,
+            "max_wait_minutes": result.max_wait_minutes, "reasoning": result.reasoning}
+
+@app.post("/dose")
+def dose_endpoint(drug: str, indication: str = "", weight_kg: float = 70,
+                  crcl: float = 100, hepatic: bool = False):
+    result = calc_dose(drug, indication=indication, weight_kg=weight_kg,
+                       crcl=crcl, hepatic_impairment=hepatic)
+    return {"drug": result.drug, "dose_text": result.dose_text,
+            "total_daily": result.total_daily, "route": result.route,
+            "adjustment_notes": result.adjustment_notes,
+            "monitoring": result.monitoring, "max_dose": result.max_dose,
+            "formatted": format_dose_result(result)}

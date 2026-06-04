@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "19歳男性",
+  "chief_complaint": "運動後の高血糖・嘔吐・意識混濁",
+  "vitals_raw": "BP 100/70, HR 108, SpO2 97%, RR 28（深大呼吸）, 体温 37.1",
+  "vital_assessment": {
+    "severity": "critical",
+    "flags": [
+      {
+        "param": "rr",
+        "message": "呼吸数 28.0/min（高値）"
+      },
+      {
+        "param": "shock_index",
+        "message": "ショック指数 1.08（≥1.0: ショック疑い — 輸液・緊急評価を推奨）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 2点 [呼吸数 28.0/min ≥22、SBP 100.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "糖尿病性ケトアシドーシス（DKA）",
+    "probability": 0.772,
+    "basis": "運動後の高血糖・嘔吐・意識混濁 + 口渇, 多尿, 嘔吐",
+    "icd10": {
+      "code": "E10.1",
+      "name_ja": "糖尿病性ケトアシドーシス（DKA）",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "高血糖高浸透圧症候群（HHS）",
+      "probability": 0.093,
+      "icd10": "E11.0",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "乳酸アシドーシス",
+      "probability": 0.065,
+      "icd10": "E87.2",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "アルコール性ケトアシドーシス",
+      "probability": 0.07,
+      "icd10": "E87.2",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 2,
+      "interpretation": "院内死亡リスク 3倍以上。Sepsis-3 基準に基づく臓器障害を疑う。"
+    }
+  },
+  "lab_flags": [
+    {
+      "name": "血糖",
+      "value": 480.0,
+      "status": "critical_high",
+      "unit": "mg/dL",
+      "message": "血糖 480.0mg/dL — 危機的高血糖 (>400): DKA・HHS を除外。緊急対応が必要"
+    },
+    {
+      "name": "動脈血pH",
+      "value": 7.18,
+      "status": "critical_low",
+      "unit": "",
+      "message": "動脈血pH 7.18 — 重篤なアシドーシス (pH<7.20): 心停止リスク。緊急補正が必要"
+    }
+  ],
+  "red_flags": [
+    "クスマウル呼吸=重篤なアシドーシス",
+    "K値モニタリング必須（インスリン投与前）"
+  ],
+  "next_steps": [
+    "血糖/ガス/電解質/ケトン",
+    "輸液(NS 1L/h)",
+    "インスリン持続",
+    "K補充"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": [
+    {
+      "timing": "0-10min",
+      "action": "診断確認と静脈路確保",
+      "dose": "血糖・血ガス・電解質・BUN/Cr・β-ヒドロキシ酪酸・尿ケトン・CBC・UA",
+      "priority": 1
+    },
+    {
+      "timing": "0-60min",
+      "action": "輸液蘇生 — 0.9% 生食",
+      "dose": "0.9% NaCl 1000-2000 mL を最初の 1 時間で IV (ショック: 500 mL ×2 ボーラス)",
+      "priority": 1
+    },
+    {
+      "timing": "0-60min",
+      "action": "カリウム確認・補充",
+      "dose": "K <3.3 mEq/L → インスリン保留。KCl 20-40 mEq/h 補充後に再評価。K 3.3-5.0: KCl 20-30 mEq/L を輸液に追加",
+      "priority": 1
+    },
+    {
+      "timing": "60min",
+      "action": "インスリン持続投与開始",
+      "dose": "レギュラーインスリン 0.1 U/kg/h IV 持続（初回ボーラス: 0.1 U/kg IV、省略可）",
+      "priority": 1
+    },
+    {
+      "timing": "1-4h",
+      "action": "輸液切替 — 0.45% NaCl",
+      "dose": "0.9% → 0.45% NaCl 250-500 mL/h（Na 補正後）",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "血糖 250 mg/dL 到達時に 5% ブドウ糖追加",
+      "dose": "5% ブドウ糖 + 0.45% NaCl に切替、インスリン継続",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "重炭酸ナトリウム（限定的適応）",
+      "dose": "pH <6.9 かつ循環破綻: NaHCO3 100 mEq を 400 mL 精製水に溶かし 2 時間で投与",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "誘因の検索・治療",
+      "dose": "感染症（抗生物質）・インスリン中断・新規発症 DM など",
+      "priority": 3
+    },
+    {
+      "timing": "8-24h",
+      "action": "皮下インスリンへの切替",
+      "dose": "AG 正常化・pH ≥7.3・重炭酸 ≥15・経口摂取可能 → 皮下インスリン導入後 2-4 時間で IV 中止",
+      "priority": 2
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "28歳女性",
+  "chief_complaint": "蜂刺され後の全身発疹・息苦しさ",
+  "vitals_raw": "BP 80/50, HR 130, SpO2 90%, RR 30, 体温 36.5",
+  "vital_assessment": {
+    "severity": "critical",
+    "flags": [
+      {
+        "param": "sbp",
+        "message": "収縮期血圧 80.0mmHg（危機的低値）"
+      },
+      {
+        "param": "dbp",
+        "message": "拡張期血圧 50.0mmHg（危機的低値）"
+      },
+      {
+        "param": "hr",
+        "message": "心拍数 130.0/min（高値）"
+      },
+      {
+        "param": "spo2",
+        "message": "酸素飽和度 90.0%（危機的低値）"
+      },
+      {
+        "param": "rr",
+        "message": "呼吸数 30.0/min（危機的高値）"
+      },
+      {
+        "param": "shock_index",
+        "message": "ショック指数 1.62（≥1.5: 重篤なショック疑い）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 2点 [呼吸数 30.0/min ≥22、SBP 80.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "アナフィラキシー",
+    "probability": 0.854,
+    "basis": "蜂刺され後の全身発疹・息苦しさ + 蕁麻疹, 顔面浮腫, 喘鳴",
+    "icd10": {
+      "code": "T78.2",
+      "name_ja": "アナフィラキシー",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "血管神経性浮腫",
+      "probability": 0.078,
+      "icd10": "T78.3",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "血管迷走神経反射",
+      "probability": 0.068,
+      "icd10": "R55",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 2,
+      "interpretation": "院内死亡リスク 3倍以上。Sepsis-3 基準に基づく臓器障害を疑う。"
+    }
+  },
+  "lab_flags": [],
+  "red_flags": [
+    "アドレナリン0.3mg筋注（大腿外側）が第一選択",
+    "気道浮腫→早期挿管判断"
+  ],
+  "next_steps": [
+    "アドレナリン0.3-0.5mg筋注",
+    "臥位+下肢挙上",
+    "酸素投与",
+    "抗ヒスタミン薬(補助)"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": [
+    {
+      "timing": "0-10min",
+      "action": "エピネフリン 筋注（第一選択）",
+      "dose": "エピネフリン 0.3-0.5 mg IM（大腿外側）。エピペン 0.3 mg も可。小児: 0.01 mg/kg",
+      "priority": 1
+    },
+    {
+      "timing": "0-10min",
+      "action": "仰臥位・下肢挙上（ショック時）",
+      "dose": null,
+      "priority": 1
+    },
+    {
+      "timing": "0-10min",
+      "action": "酸素投与",
+      "dose": "高流量酸素 10-15 L/min マスク（SpO2 ≥95% 目標）",
+      "priority": 1
+    },
+    {
+      "timing": "0-10min",
+      "action": "静脈路確保",
+      "dose": "太径カテーテル（16-18G）× 2 本",
+      "priority": 1
+    },
+    {
+      "timing": "0-10min",
+      "action": "エピネフリン効果不十分 → 5-15 分後に再投与",
+      "dose": "エピネフリン 0.3-0.5 mg IM 反復（最大 3 回）",
+      "priority": 2
+    },
+    {
+      "timing": "0-30min",
+      "action": "輸液蘇生（低血圧・ショック）",
+      "dose": "生食 1-2 L IV 急速投与（小児: 20 mL/kg ボーラス）",
+      "priority": 1
+    },
+    {
+      "timing": "10-30min",
+      "action": "抗ヒスタミン薬（補助）",
+      "dose": "ジフェンヒドラミン 25-50 mg IV または PO（皮膚症状の緩和）",
+      "priority": 2
+    },
+    {
+      "timing": "10-30min",
+      "action": "コルチコステロイド（遅発相予防）",
+      "dose": "メチルプレドニゾロン 125 mg IV（または等価量）",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "エピネフリン持続投与（難治性）",
+      "dose": "エピネフリン 0.1-0.5 μg/kg/min IV 持続",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "気管挿管・外科的気道確保",
+      "dose": null,
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "観察 4-8 時間（双相反応の監視）",
+      "dose": null,
+      "priority": 3
+    }
+  ]
+}

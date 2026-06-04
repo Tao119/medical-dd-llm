@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "70歳男性",
+  "chief_complaint": "背部裂けるような痛み",
+  "vitals_raw": "BP(R) 180/100 BP(L) 140/85, HR 95, SpO2 96%, RR 20",
+  "vital_assessment": {
+    "severity": "normal",
+    "flags": []
+  },
+  "primary_diagnosis": {
+    "disease": "急性大動脈解離",
+    "probability": 0.79,
+    "basis": "背部裂けるような痛み + 引き裂かれるような背部痛, 上肢血圧左右差, 冷汗",
+    "icd10": {
+      "code": "I71.0",
+      "name_ja": "急性大動脈解離",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "急性冠症候群（ACS）",
+      "probability": 0.114,
+      "icd10": "I21.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "大動脈瘤破裂",
+      "probability": 0.095,
+      "icd10": "I71.3",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 0,
+      "interpretation": "qSOFA 陰性でも敗血症を除外できない。臨床的判断を優先すること。"
+    }
+  },
+  "lab_flags": [],
+  "red_flags": [
+    "造影CT緊急施行",
+    "外科緊急コール",
+    "血圧両側測定"
+  ],
+  "next_steps": [
+    "造影CT胸腹部",
+    "外科コンサルト",
+    "血圧両側測定+HR管理"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": [
+    {
+      "timing": "0-10min",
+      "action": "安静・IV 路確保（太径 2 本）",
+      "dose": "安静臥床。不必要な体動を避ける",
+      "priority": 1
+    },
+    {
+      "timing": "0-30min",
+      "action": "心拍数コントロール（第一目標）",
+      "dose": "エスモロール 500 μg/kg IV ボーラス → 50-200 μg/kg/min 持続 （目標 HR <60 bpm）",
+      "priority": 1
+    },
+    {
+      "timing": "0-30min",
+      "action": "血圧コントロール（HR 目標達成後）",
+      "dose": "ニカルジピン 5-15 mg/h IV（SBP 目標 100-120 mmHg）または ニトロプルシド 0.3-10 μg/kg/min",
+      "priority": 1
+    },
+    {
+      "timing": "0-30min",
+      "action": "CT 大動脈造影（診断確定）",
+      "dose": "造影 CT: Stanford 分類・解離範囲・合併症評価",
+      "priority": 1
+    },
+    {
+      "timing": "0-60min",
+      "action": "Stanford A 型 → 緊急心臓外科コンサルト・手術準備",
+      "dose": null,
+      "priority": 1
+    },
+    {
+      "timing": "ongoing",
+      "action": "鎮痛（疼痛コントロール）",
+      "dose": "モルヒネ 2-4 mg IV 滴定（疼痛は血圧上昇を招く）",
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "Stanford B 型の合併症管理",
+      "dose": null,
+      "priority": 2
+    },
+    {
+      "timing": "ongoing",
+      "action": "長期血圧管理（退院後）",
+      "dose": "SBP <130 mmHg 目標。β遮断薬を第一選択。定期的 CT フォロー",
+      "priority": 3
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "55歳男性",
+  "chief_complaint": "発熱・意識障害・低血圧",
+  "vitals_raw": "BP 85/55, HR 120, SpO2 92%, RR 26, 体温 39.5",
+  "vital_assessment": {
+    "severity": "critical",
+    "flags": [
+      {
+        "param": "sbp",
+        "message": "収縮期血圧 85.0mmHg（低値）"
+      },
+      {
+        "param": "dbp",
+        "message": "拡張期血圧 55.0mmHg（低値）"
+      },
+      {
+        "param": "hr",
+        "message": "心拍数 120.0/min（高値）"
+      },
+      {
+        "param": "spo2",
+        "message": "酸素飽和度 92.0%（低値）"
+      },
+      {
+        "param": "rr",
+        "message": "呼吸数 26.0/min（高値）"
+      },
+      {
+        "param": "temp",
+        "message": "体温 39.5℃（高値）"
+      },
+      {
+        "param": "shock_index",
+        "message": "ショック指数 1.41（≥1.0: ショック疑い — 輸液・緊急評価を推奨）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 2点 [呼吸数 26.0/min ≥22、SBP 85.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "精査必要",
+    "probability": 0.5,
+    "basis": "症状パターンが特定できません",
+    "icd10": null
+  },
+  "differentials": [],
+  "risk_scores": {},
+  "lab_flags": [
+    {
+      "name": "乳酸値",
+      "value": 4.2,
+      "status": "critical_high",
+      "unit": "mmol/L",
+      "message": "乳酸値 4.2mmol/L — 乳酸著明上昇 (>4): ショック状態を示唆。積極的輸液・昇圧剤投与・ICU 管理"
+    },
+    {
+      "name": "プロカルシトニン",
+      "value": 15.0,
+      "status": "critical_high",
+      "unit": "ng/mL",
+      "message": "プロカルシトニン 15.0ng/mL — 高度 PCT 上昇 (>10): 重症敗血症・敗血症性ショックを強く示唆"
+    },
+    {
+      "name": "白血球数",
+      "value": 22000.0,
+      "status": "high",
+      "unit": "/μL",
+      "message": "白血球数 22000.0/μL — 白血球増多: 感染・炎症・血液疾患を考慮"
+    },
+    {
+      "name": "クレアチニン",
+      "value": 2.3,
+      "status": "high",
+      "unit": "mg/dL",
+      "message": "クレアチニン 2.3mg/dL — クレアチニン上昇: 腎機能障害 (AKI/CKD) を評価"
+    }
+  ],
+  "red_flags": [
+    "専門医への紹介を検討",
+    "バイタル安定化優先"
+  ],
+  "next_steps": [
+    "詳細な病歴聴取",
+    "バイタル監視"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": []
+}

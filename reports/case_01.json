@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-06-04 23:02",
+  "patient": "65歳男性",
+  "chief_complaint": "胸痛・冷汗",
+  "vitals_raw": "BP 90/60, HR 110, SpO2 94%, RR 22, 体温 36.8",
+  "vital_assessment": {
+    "severity": "critical",
+    "flags": [
+      {
+        "param": "sbp",
+        "message": "収縮期血圧 90.0mmHg（低値）"
+      },
+      {
+        "param": "dbp",
+        "message": "拡張期血圧 60.0mmHg（低値）"
+      },
+      {
+        "param": "spo2",
+        "message": "酸素飽和度 94.0%（低値）"
+      },
+      {
+        "param": "shock_index",
+        "message": "ショック指数 1.22（≥1.0: ショック疑い — 輸液・緊急評価を推奨）"
+      },
+      {
+        "param": "qsofa",
+        "message": "qSOFA 2点 [呼吸数 22.0/min ≥22、SBP 90.0mmHg ≤100] → 敗血症ハイリスク: 血液培養・乳酸値・ICU評価を至急"
+      }
+    ]
+  },
+  "primary_diagnosis": {
+    "disease": "急性冠症候群（ACS）",
+    "probability": 0.695,
+    "basis": "胸痛・冷汗 + 前胸部圧迫感, 冷汗, 左肩放散痛",
+    "icd10": {
+      "code": "I21.9",
+      "name_ja": "急性冠症候群（ACS）",
+      "name_en": ""
+    }
+  },
+  "differentials": [
+    {
+      "disease": "大動脈解離",
+      "probability": 0.133,
+      "icd10": "I71.0",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "肺塞栓症",
+      "probability": 0.095,
+      "icd10": "I26.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "急性心膜炎",
+      "probability": 0.048,
+      "icd10": "I30.9",
+      "distinguishing_features": ""
+    },
+    {
+      "disease": "食道痙攣",
+      "probability": 0.029,
+      "icd10": "K22.4",
+      "distinguishing_features": ""
+    }
+  ],
+  "risk_scores": {
+    "qSOFA": {
+      "score": 2,
+      "interpretation": "院内死亡リスク 3倍以上。Sepsis-3 基準に基づく臓器障害を疑う。"
+    }
+  },
+  "lab_flags": [
+    {
+      "name": "BNP",
+      "value": 650.0,
+      "status": "critical_high",
+      "unit": "pg/mL",
+      "message": "BNP 650.0pg/mL — 高度 BNP 上昇 (>200): 心不全の強い指標。利尿薬・心不全治療の開始を考慮"
+    },
+    {
+      "name": "C反応性蛋白",
+      "value": 3.5,
+      "status": "high",
+      "unit": "mg/dL",
+      "message": "C反応性蛋白 3.5mg/dL — CRP 上昇: 炎症・感染を示唆"
+    }
+  ],
+  "red_flags": [
+    "12誘導心電図即時確認",
+    "TnI採血",
+    "循環器緊急コール"
+  ],
+  "next_steps": [
+    "12誘導心電図",
+    "採血(TnI/CK-MB/BNP)",
+    "胸部X線",
+    "心エコー"
+  ],
+  "urgency": "immediate",
+  "protocol_steps": []
+}
