@@ -44,7 +44,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -76,7 +76,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -124,7 +124,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -156,7 +156,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -204,7 +204,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -220,7 +220,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -236,7 +236,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -252,7 +252,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -268,7 +268,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 0.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -284,7 +284,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -332,7 +332,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -364,7 +364,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -380,7 +380,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -412,7 +412,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -444,7 +444,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -460,7 +460,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -476,7 +476,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -492,7 +492,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -508,7 +508,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -524,7 +524,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -540,7 +540,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 0.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -588,7 +588,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -620,7 +620,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -636,7 +636,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -668,7 +668,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -684,7 +684,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -700,7 +700,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -716,7 +716,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -732,7 +732,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.3333333333333333,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -748,7 +748,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 0.0,
-      "rf_recall": 0.0,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -764,7 +764,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 1.0,
       "error": null
     },
@@ -780,7 +780,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 0.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     },
@@ -796,7 +796,7 @@
       "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
-      "rf_recall": 0.5,
+      "rf_recall": 1.0,
       "diff_cov": 0.0,
       "error": null
     }

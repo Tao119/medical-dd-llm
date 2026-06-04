@@ -12,7 +12,9 @@ from clinical.lab_interpreter import interpret_labs
 from clinical.icd10 import get_icd10
 from model.dd_rules_extended import EXTENDED_DD_RULES
 from model.keyword_patch import apply_patches as _apply_patches
+from model.red_flag_patch import apply_red_flag_patches as _apply_rf_patches
 EXTENDED_DD_RULES = _apply_patches(EXTENDED_DD_RULES)
+EXTENDED_DD_RULES = _apply_rf_patches(EXTENDED_DD_RULES)
 
 
 @dataclass

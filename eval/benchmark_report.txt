@@ -2,11 +2,11 @@
 Total cases: 50 (Easy:20, Medium:20, Hard:10)
 
 Accuracy by difficulty:
-  Easy    : primary=100% / urgency=70% / ICD3=90% / rf_recall=48% / diff_cov=35%
-  Medium  : primary=90% / urgency=75% / ICD3=85% / rf_recall=32% / diff_cov=40%
-  Hard    : primary=100% / urgency=90% / ICD3=90% / rf_recall=43% / diff_cov=30%
+  Easy    : primary=100% / urgency=70% / ICD3=90% / rf_recall=90% / diff_cov=35%
+  Medium  : primary=90% / urgency=75% / ICD3=85% / rf_recall=85% / diff_cov=40%
+  Hard    : primary=100% / urgency=90% / ICD3=90% / rf_recall=100% / diff_cov=30%
 
-Overall: primary=96% / urgency=76% / ICD3=88% / rf_recall=41% / diff_cov=36%
+Overall: primary=96% / urgency=76% / ICD3=88% / rf_recall=90% / diff_cov=36%
 
 Top prediction errors (2 of 2 failed cases):
   1. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
