@@ -180,7 +180,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8765)
 
 
-# ── 追加エンドポイント ─────────────────────────────────────────
+# ── 既存追加エンドポイント ─────────────────────────────────────────
 
 from clinical.pediatric import PediatricVitals, assess_pediatric_vitals, pediatric_drug_dose, holliday_segar
 from clinical.treatment_protocols import get_protocol, format_protocol_text
@@ -255,3 +255,303 @@ def dose_endpoint(drug: str, indication: str = "", weight_kg: float = 70,
             "adjustment_notes": result.adjustment_notes,
             "monitoring": result.monitoring, "max_dose": result.max_dose,
             "formatted": format_dose_result(result)}
+
+
+# ── 専門科・ICU・症状チェッカー追加エンドポイント ─────────────────────────
+
+from clinical.cardiology_specialist import (
+    interpret_ecg, calc_cha2ds2vasc, classify_shock
+)
+from clinical.pulmonology_specialist import interpret_spirometry, calc_pe_probability
+from clinical.neurology_specialist import calc_nihss, check_tpa_eligibility
+from clinical.icu_scoring import calc_news2, calc_sofa
+from viz.decision_tree import get_decision_tree, SUPPORTED_CONDITIONS
+from viz.symptom_checker import SymptomChecker
+
+
+# ── Cardiology ────────────────────────────────────────────────────────────
+
+class ECGInput(BaseModel):
+    ecg_text: str = Field(..., example="ST上昇 V1-V4, LBBB, QTc 500ms")
+
+
+@app.post("/specialist/cardiology/ecg")
+def ecg_endpoint(inp: ECGInput):
+    """ECG interpretation with urgent flag detection."""
+    result = interpret_ecg(inp.ecg_text)
+    return {
+        "findings": result.findings,
+        "urgent_flags": result.urgent_flags,
+        "interpretation": result.interpretation,
+        "recommended_actions": result.recommended_actions,
+    }
+
+
+class CHA2DS2Input(BaseModel):
+    age: int = Field(..., example=72)
+    sex: str = Field(..., example="男")
+    chf: bool = False
+    hypertension: bool = False
+    stroke: bool = False
+    vascular: bool = False
+    diabetes: bool = False
+
+
+@app.post("/specialist/cardiology/chadsvasc")
+def chadsvasc_endpoint(inp: CHA2DS2Input):
+    """CHA2DS2-VASc score for AF stroke risk."""
+    result = calc_cha2ds2vasc(
+        age=inp.age, sex=inp.sex, chf=inp.chf,
+        hypertension=inp.hypertension, stroke=inp.stroke,
+        vascular=inp.vascular, diabetes=inp.diabetes,
+    )
+    return result
+
+
+class ShockInput(BaseModel):
+    sbp: float = Field(..., example=75.0)
+    hr: float = Field(..., example=130.0)
+    symptoms: List[str] = Field(default=[], example=["心筋梗塞", "肺水腫"])
+    history: List[str] = Field(default=[], example=["冠動脈疾患"])
+
+
+@app.post("/specialist/cardiology/shock")
+def shock_endpoint(inp: ShockInput):
+    """Shock classification and management."""
+    result = classify_shock(sbp=inp.sbp, hr=inp.hr,
+                            symptoms=inp.symptoms, history=inp.history)
+    return result
+
+
+# ── Pulmonology ───────────────────────────────────────────────────────────
+
+class SpirometryInput(BaseModel):
+    fev1_pct: float = Field(..., example=45.0, description="FEV1 % predicted")
+    fvc_pct: float = Field(..., example=85.0, description="FVC % predicted")
+    fev1_fvc: float = Field(..., example=0.55, description="FEV1/FVC ratio")
+
+
+@app.post("/specialist/pulmonology/spirometry")
+def spirometry_endpoint(inp: SpirometryInput):
+    """Spirometry pattern interpretation (obstructive/restrictive/mixed/normal)."""
+    result = interpret_spirometry(
+        fev1_pct=inp.fev1_pct,
+        fvc_pct=inp.fvc_pct,
+        fev1_fvc=inp.fev1_fvc,
+    )
+    return {
+        "pattern": result.pattern,
+        "severity": result.severity,
+        "gold_stage": result.gold_stage,
+        "interpretation": result.interpretation,
+    }
+
+
+class PEWellsInput(BaseModel):
+    hr: int = Field(..., example=115)
+    dvt_signs: bool = False
+    pe_more_likely: bool = False
+    immobilization: bool = False
+    prior_dvt_pe: bool = False
+    hemoptysis: bool = False
+    cancer: bool = False
+    spo2: float = Field(default=96.0)
+    age: int = Field(default=50)
+
+
+@app.post("/specialist/pulmonology/pe_wells")
+def pe_wells_endpoint(inp: PEWellsInput):
+    """PE probability calculation using modified Wells score."""
+    result = calc_pe_probability(
+        hr=inp.hr,
+        dvt_signs=inp.dvt_signs,
+        pe_more_likely=inp.pe_more_likely,
+        immobilization=inp.immobilization,
+        prior_dvt_pe=inp.prior_dvt_pe,
+        hemoptysis=inp.hemoptysis,
+        cancer=inp.cancer,
+        spo2=inp.spo2,
+        age=inp.age,
+    )
+    return result
+
+
+# ── Neurology ─────────────────────────────────────────────────────────────
+
+class NIHSSInput(BaseModel):
+    consciousness: int = Field(default=0, ge=0, le=3)
+    orientation: int = Field(default=0, ge=0, le=2)
+    commands: int = Field(default=0, ge=0, le=2)
+    gaze: int = Field(default=0, ge=0, le=2)
+    visual: int = Field(default=0, ge=0, le=3)
+    facial: int = Field(default=0, ge=0, le=3)
+    motor_arm_left: int = Field(default=0, ge=0, le=4)
+    motor_arm_right: int = Field(default=0, ge=0, le=4)
+    motor_leg_left: int = Field(default=0, ge=0, le=4)
+    motor_leg_right: int = Field(default=0, ge=0, le=4)
+    ataxia: int = Field(default=0, ge=0, le=2)
+    sensory: int = Field(default=0, ge=0, le=2)
+    language: int = Field(default=0, ge=0, le=3)
+    dysarthria: int = Field(default=0, ge=0, le=2)
+    extinction: int = Field(default=0, ge=0, le=2)
+
+
+@app.post("/specialist/neurology/nihss")
+def nihss_endpoint(inp: NIHSSInput):
+    """NIHSS stroke severity calculation."""
+    result = calc_nihss(**inp.model_dump())
+    return {
+        "total_score": result.total_score,
+        "severity": result.severity,
+        "mrs_predicted": result.mrs_predicted,
+        "mrs_interpretation": result.mrs_interpretation,
+        "component_scores": result.component_scores,
+        "recommendations": result.recommendations,
+    }
+
+
+class TpaInput(BaseModel):
+    ischemic_stroke: bool = True
+    nihss: int = Field(default=0, ge=0)
+    onset_hours: float = Field(default=0.0, ge=0.0)
+    age: int = Field(default=18, ge=0)
+    weight_kg: float = Field(default=70.0, gt=0)
+    hemorrhage_on_ct: bool = False
+    inr: float = Field(default=1.0, ge=0)
+    platelets_k: float = Field(default=200.0, ge=0)
+    recent_major_surgery_days: int = Field(default=9999, ge=0)
+    recent_intracranial_surgery: bool = False
+    sbp: float = Field(default=140.0)
+    dbp: float = Field(default=80.0)
+    glucose: float = Field(default=100.0)
+    on_anticoagulant: bool = False
+    on_doac: bool = False
+    prior_stroke_diabetes: bool = False
+
+
+@app.post("/specialist/neurology/tpa")
+def tpa_endpoint(inp: TpaInput):
+    """tPA eligibility assessment for ischemic stroke (AHA 2023)."""
+    result = check_tpa_eligibility(**inp.model_dump())
+    return {
+        "eligible": result.eligible,
+        "dose_mg": result.dose_mg,
+        "absolute_exclusions": result.absolute_exclusions,
+        "relative_exclusions": result.relative_exclusions,
+        "notes": result.notes,
+    }
+
+
+# ── ICU Scoring ───────────────────────────────────────────────────────────
+
+class NEWS2Input(BaseModel):
+    rr: float = Field(default=16.0)
+    spo2_pct: float = Field(default=97.0)
+    on_supplemental_o2: bool = False
+    sbp_mmhg: float = Field(default=120.0)
+    hr: float = Field(default=75.0)
+    consciousness: str = Field(default="A", description="A/C/V/P/U (ACVPU scale)")
+    temperature_c: float = Field(default=36.5)
+    hypercapnic_respiratory_failure: bool = False
+
+
+@app.post("/icu/news2")
+def news2_endpoint(inp: NEWS2Input):
+    """NEWS2 Early Warning Score calculation."""
+    result = calc_news2(**inp.model_dump())
+    return {
+        "score": result.score,
+        "risk_category": result.risk_category,
+        "component_scores": result.component_scores,
+        "escalation_required": result.escalation_required,
+        "recommended_response": result.recommended_response,
+        "monitoring_frequency": result.monitoring_frequency,
+    }
+
+
+class SOFAInput(BaseModel):
+    pao2_fio2: float = Field(default=400.0, description="PaO2/FiO2 ratio")
+    on_respiratory_support: bool = False
+    platelets_k: float = Field(default=200.0, description="platelets ×10³/μL")
+    bilirubin_mg_dl: float = Field(default=0.8)
+    map_mmhg: float = Field(default=75.0)
+    vasopressor: str = Field(default="none",
+                              description="none/map_low/dopa_low/dopa_mid/epi/norepi")
+    gcs: int = Field(default=15, ge=3, le=15)
+    cr_mg_dl: float = Field(default=0.9)
+    urine_output_ml_day: Optional[float] = None
+
+
+@app.post("/icu/sofa")
+def sofa_endpoint(inp: SOFAInput):
+    """SOFA (Sequential Organ Failure Assessment) score."""
+    result = calc_sofa(**inp.model_dump())
+    return {
+        "score": result.score,
+        "organ_scores": result.organ_scores,
+        "interpretation": result.interpretation,
+        "mortality_estimate": result.mortality_estimate,
+        "recommendations": result.recommendations,
+    }
+
+
+# ── Decision Tree ─────────────────────────────────────────────────────────
+
+@app.post("/decision_tree/{condition}")
+def decision_tree_endpoint(condition: str):
+    """ASCII clinical decision tree for chest_pain, sepsis, or dyspnea."""
+    try:
+        tree_text = get_decision_tree(condition)
+        return {
+            "condition": condition,
+            "ascii_tree": tree_text,
+            "supported_conditions": SUPPORTED_CONDITIONS,
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+# ── Symptom Checker ───────────────────────────────────────────────────────
+
+# In-memory session store (single-process, demo only)
+_checkers: dict[str, SymptomChecker] = {}
+
+
+class SymptomCheckInput(BaseModel):
+    session_id: str = Field(default="default", description="Session identifier")
+    action: str = Field(..., description="'start' to begin, 'answer' to respond")
+    response: Optional[str] = Field(default=None, description="Answer text (when action='answer')")
+
+
+@app.post("/symptom_check")
+def symptom_check_endpoint(inp: SymptomCheckInput):
+    """Interactive symptom checker. Start with action='start', then action='answer'."""
+    sid = inp.session_id
+    if sid not in _checkers:
+        _checkers[sid] = SymptomChecker()
+    checker = _checkers[sid]
+
+    if inp.action == "start":
+        question = checker.start()
+        return {"type": "question", "content": question, "session_id": sid}
+
+    elif inp.action == "answer":
+        if not inp.response:
+            raise HTTPException(status_code=400, detail="response field required for action='answer'")
+        result = checker.answer(inp.response)
+        if isinstance(result, str):
+            return {"type": "question", "content": result, "session_id": sid}
+        else:
+            # DiagnosisResult
+            return {
+                "type": "result",
+                "session_id": sid,
+                "differentials": result.differentials,
+                "urgency": result.urgency,
+                "urgency_jp": result.urgency_jp,
+                "next_steps": result.next_steps,
+                "red_flags": result.red_flags,
+                "path_summary": result.path_summary,
+            }
+    else:
+        raise HTTPException(status_code=400, detail=f"Unknown action: {inp.action}. Use 'start' or 'answer'.")
