@@ -1,8 +1,17 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-BASE_MODEL = "rinna/japanese-gpt2-medium"
+# 推奨ベースモデル（用途別）
+# Mac MPS (16GB+): Swallow-8B (MLX or HuggingFace)
+# A100 40GB: Qwen2.5-7B with QLoRA
+# 評価ベースライン: pfnet/Preferred-MedLLM-Qwen-72B (推論のみ)
+BASE_MODEL = "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.5"
+BASE_MODEL_SMALL = "rinna/japanese-gpt2-medium"   # 動作確認用
 EMBED_MODEL = "cl-tohoku/bert-base-japanese-v3"
+
+# 評価データセット (stardust-coder/japanese-lm-med-harness)
+IGAKUQA_BENCHMARK = "stardust-coder/IgakuQA"
+APOLLOCORPUS_JA   = "kunishou/ApolloCorpus-ja"
 
 DD_SCHEMA = {
     "primary": {
