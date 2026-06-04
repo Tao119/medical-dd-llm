@@ -3,12 +3,12 @@ Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
   Easy    : primary=87% / urgency=65% / ICD3=83% / rf_recall=54% / diff_cov=37%
-  Medium  : primary=43% / urgency=59% / ICD3=44% / rf_recall=27% / diff_cov=28%
+  Medium  : primary=44% / urgency=59% / ICD3=44% / rf_recall=27% / diff_cov=28%
   Hard    : primary=38% / urgency=72% / ICD3=36% / rf_recall=24% / diff_cov=16%
 
-Overall: primary=55% / urgency=64% / ICD3=54% / rf_recall=34% / diff_cov=28%
+Overall: primary=56% / urgency=64% / ICD3=54% / rf_recall=34% / diff_cov=28%
 
-Top prediction errors (10 of 90 failed cases):
+Top prediction errors (10 of 89 failed cases):
   1. ギラン・バレー症候群 → predicted as '精査必要' (2 cases)
   2. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
   3. 高血圧性脳症 → predicted as '精査必要' (2 cases)

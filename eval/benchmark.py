@@ -836,10 +836,21 @@ def char_overlap(pred: str, gold: str, min_len: int = 2) -> float:
 
 
 def primary_accuracy(pred_disease: str, gold_disease: str) -> float:
+    # 完全一致
+    if pred_disease == gold_disease:
+        return 1.0
+    # 一方が他方を含む (例: "急性冠症候群" ⊂ "急性冠症候群（非典型）")
+    if gold_disease in pred_disease or pred_disease in gold_disease:
+        return 1.0
+    # 主要語の一致 (括弧前の部分で比較)
+    def strip_paren(s):
+        return s.split("（")[0].split("(")[0].strip()
+    if strip_paren(pred_disease) == strip_paren(gold_disease):
+        return 1.0
     wo = word_overlap(pred_disease, gold_disease)
     if wo >= 0.6:
         return 1.0
-    # Also check character-level
+    # 文字レベルのオーバーラップ (日本語対応)
     if char_overlap(pred_disease, gold_disease) >= 0.5:
         return 1.0
     return 0.0

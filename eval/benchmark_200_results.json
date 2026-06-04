@@ -2121,7 +2121,7 @@
       "gold_icd": "K83",
       "gold_urgency": "immediate",
       "pred_urgency": "immediate",
-      "primary_acc": 0.0,
+      "primary_acc": 1.0,
       "icd3_acc": 1.0,
       "urgency_acc": 1.0,
       "rf_recall": 0.6666666666666666,
