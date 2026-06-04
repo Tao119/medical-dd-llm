@@ -56,13 +56,16 @@ class MedicalIndexer:
 
     def _chunk_text(self, text: str, size: int, overlap: int) -> list[str]:
         text = re.sub(r"\s+", " ", text).strip()
-        words = text.split()
+        # 日本語対応: 文字数ベースでチャンク化
+        char_size = size * 2  # 1単語≒2文字と仮定
+        char_overlap = overlap * 2
         chunks = []
         i = 0
-        while i < len(words):
-            chunk = " ".join(words[i : i + size])
-            chunks.append(chunk)
-            i += size - overlap
+        while i < len(text):
+            chunk = text[i : i + char_size]
+            if chunk.strip():
+                chunks.append(chunk)
+            i += char_size - char_overlap
         return chunks
 
     def build_index(self, batch_size: int = 16):

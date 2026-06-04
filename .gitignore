@@ -6,3 +6,4 @@ __pycache__/
 *.pt
 *.bin
 *.pkl
+data/processed/apollocorpus_sample.json
