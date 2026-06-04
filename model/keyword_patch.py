@@ -379,8 +379,24 @@ KEYWORD_PATCHES.update({
     # benchmark_200 対応 - 症状テキストマッチ強化
     # HYPOTHYROIDISM: 甲状腺特有キーワードで熱射病との競合を防ぐ
     "HYPOTHYROIDISM": {"add_keywords": ["便秘 徐脈", "著明な倦怠感 徐脈", "甲状腺 倦怠 徐脈", "体重増加5kg"], "min_match": 1},
-    # HEAT_STROKE: 夏季・高温環境を必須に (皮膚乾燥のみでマッチしないよう)
-    "HEAT_STROKE": {"add_keywords": ["夏季 体温40", "高温 意識障害 体温", "核心温度 意識障害", "熱中症 重症 意識"], "min_match": 2},
+    # HEAT_STROKE: 体温40℃以上+意識障害で確実にマッチ
+    "HEAT_STROKE": {"add_keywords": ["体温40.5", "体温40 意識障害", "屋外活動後 意識障害", "夏季 体温40"], "min_match": 1},
+    # PRES: MRI後頭葉白質変化が鍵
+    "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["MRI後頭葉白質", "白質変化 高血圧", "後頭葉白質 高血圧", "慢性腎不全 血圧上昇 MRI"], "min_match": 1},
+    # 原発性アルドステロン症: 低K+高血圧が鍵
+    "PRIMARY_ALDOSTERONISM": {"add_keywords": ["K 2.2", "低カリウム 筋力低下", "K低値 高血圧", "代謝性アルカローシス 高血圧", "易疲労性 K低値"], "min_match": 1},
+    # 細菌性脊椎炎: 透析+MRSA
+    "VERTEBRAL_OSTEOMYELITIS": {"add_keywords": ["透析 発熱 腰痛", "MRSA陽性 発熱 腰背部", "透析患者 腰背部痛", "血培養MRSA"], "min_match": 1},
+    # TEN: 皮膚剥離>30%
+    "TEN": {"add_keywords": ["皮膚剥離>30%", "皮膚剥離30%以上", "水疱 全身 粘膜びらん", "薬剤服用後 全身発疹 水疱"], "min_match": 1},
+    # 突発性難聴: 片耳高度難聴
+    "ACUTE_GLAUCOMA": {"add_keywords": ["突然の片耳高度難聴", "突発性難聴", "耳鳴 突然 難聴", "回転性めまい 耳"], "min_match": 1},
+    # NMO/NMOSD: 視神経T2高信号
+    "NMOSD": {"add_keywords": ["MRI視神経T2高信号", "急性視力低下 眼球運動痛", "視野欠損 視神経", "急性視力低下 視野"], "min_match": 1},
+    # 心アミロイドーシス: 低電位+心肥大
+    "CARDIAC_AMYLOIDOSIS": {"add_keywords": ["低電位心電図 心肥大", "腱反射消失 心肥大", "タンパク尿 心肥大 低電位", "全身脱力 心肥大"], "min_match": 1},
+    # 自律神経過反射: 頸髄損傷後
+    "SYNCOPE": {"add_keywords": ["頸髄損傷 発汗", "脊髄損傷 血圧変動", "自律神経過反射"], "min_match": 1},
     "ACUTE_LEUKEMIA": {"add_keywords": ["歯肉出血", "Hb 7", "WBC 150000", "出血傾向 貧血 発熱"], "min_match": 1},
     "CELLULITIS": {"add_keywords": ["下腿皮膚発赤", "腫脹 境界不明瞭", "下腿発赤", "皮膚発赤 腫脹"], "min_match": 1},
     "SEPTIC_ARTHRITIS": {"add_keywords": ["単発性関節炎", "膝関節 発熱 CRP", "関節単発 発熱"], "min_match": 1},

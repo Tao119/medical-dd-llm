@@ -2490,3 +2490,102 @@ HARD_RULES_V2 = [
 ]
 
 EXTENDED_DD_RULES.extend(HARD_RULES_V2)
+
+# ── 未対応疾患 v5 ──────────────────────────────────────────────
+UNMATCHED_RULES = [
+    {
+        "id": "PANCREATIC_CANCER",
+        "min_match": 1,
+        "keywords": ["膵癌", "膵頭部腫瘤", "閉塞性黄疸 膵", "CT膵腫瘤", "膵臓癌"],
+        "diagnoses": [
+            {"disease": "膵癌", "icd10": "C25.9", "base_prob": 0.68,
+             "boost_kw": ["体重減少","閉塞性黄疸","上腹部痛","CA19-9","膵頭部腫瘤","CT"]},
+            {"disease": "急性膵炎", "icd10": "K85.9", "base_prob": 0.15,
+             "boost_kw": ["アミラーゼ","リパーゼ","飲酒","胆石"]},
+            {"disease": "胆道癌（胆管癌）", "icd10": "C22.1", "base_prob": 0.10,
+             "boost_kw": ["胆管拡張","閉塞性黄疸","胆管"]},
+            {"disease": "総胆管結石", "icd10": "K80.5", "base_prob": 0.07,
+             "boost_kw": ["黄疸","疝痛","胆石既往"]},
+        ],
+        "red_flags": ["CA19-9>200は膵癌可能性高", "MRI/EUS/ERCPで早期診断"],
+        "next_steps": ["腹部CT造影", "CA19-9/CEA", "MRCP or EUS", "膵消化器科"],
+        "scoring_hints": [],
+        "urgency_override": None,
+    },
+    {
+        "id": "NEC",
+        "min_match": 1,
+        "keywords": ["壊死性腸炎", "NEC", "腸管壁気腫", "未熟児 腸炎", "在胎 腸管"],
+        "diagnoses": [
+            {"disease": "壊死性腸炎（NEC）", "icd10": "P77.9", "base_prob": 0.78,
+             "boost_kw": ["未熟児","在胎","腹部膨満","血便","腸管壁気腫","腹膜炎"]},
+            {"disease": "腸重積症（小児）", "icd10": "K56.1", "base_prob": 0.12,
+             "boost_kw": ["間歇的腹痛","イチゴゼリー状","6-36ヶ月"]},
+            {"disease": "虫垂炎", "icd10": "K37", "base_prob": 0.07,
+             "boost_kw": ["右下腹部","McBurney","WBC上昇"]},
+            {"disease": "ヒルシュスプルング病", "icd10": "Q43.1", "base_prob": 0.03,
+             "boost_kw": ["新生児","胎便排泄遅延","便秘"]},
+        ],
+        "red_flags": ["腸管穿孔→緊急手術", "絶食+補液+抗菌薬→外科コール"],
+        "next_steps": ["腹部X線(気腫+free air)", "絶食+TPN", "ピペラシリン/タゾバクタム", "小児外科緊急"],
+        "scoring_hints": [],
+        "urgency_override": "immediate",
+    },
+    {
+        "id": "CONGENITAL_HEART_DISEASE_CYANOSIS",
+        "min_match": 1,
+        "keywords": ["チアノーゼ 新生児", "大血管転位", "TGA", "出生後 チアノーゼ", "先天性心疾患 青色"],
+        "diagnoses": [
+            {"disease": "先天性心疾患（大血管転位症）", "icd10": "Q20.3", "base_prob": 0.55,
+             "boost_kw": ["出生直後","チアノーゼ","頸静脈怒張","卵円孔","TGA","大血管"]},
+            {"disease": "ファロー四徴症（TOF）", "icd10": "Q21.3", "base_prob": 0.20,
+             "boost_kw": ["ファロー","チアノーゼ発作","うずくまり","VSD"]},
+            {"disease": "新生児呼吸窮迫症候群（RDS）", "icd10": "P22.0", "base_prob": 0.15,
+             "boost_kw": ["未熟児","サーファクタント","X線すりガラス"]},
+            {"disease": "新生児一過性多呼吸（TTN）", "icd10": "P22.1", "base_prob": 0.10,
+             "boost_kw": ["満期産","帝王切開","自然改善"]},
+        ],
+        "red_flags": ["大血管転位→プロスタグランジン緊急投与（動脈管開存維持）", "心臓外科緊急"],
+        "next_steps": ["心エコー（確定診断）", "PGE1開始（動脈管開存）", "心臓外科緊急", "酸素投与"],
+        "scoring_hints": [],
+        "urgency_override": "immediate",
+    },
+    {
+        "id": "SUDDEN_SENSORINEURAL_HEARING_LOSS",
+        "min_match": 1,
+        "keywords": ["突発性難聴", "突然の難聴", "片耳高度難聴", "突然の聴力低下"],
+        "diagnoses": [
+            {"disease": "突発性難聴", "icd10": "H91.2", "base_prob": 0.72,
+             "boost_kw": ["突然の片耳高度難聴","耳鳴","めまい","一側性","原因不明"]},
+            {"disease": "外リンパ瘻", "icd10": "H83.0", "base_prob": 0.10,
+             "boost_kw": ["いきみ","外傷","急激な圧変化"]},
+            {"disease": "メニエール病", "icd10": "H81.0", "base_prob": 0.10,
+             "boost_kw": ["反復性","低音障害型","耳閉感","回転性めまい"]},
+            {"disease": "聴神経腫瘍", "icd10": "D33.3", "base_prob": 0.08,
+             "boost_kw": ["進行性","片側性","MRI確認"]},
+        ],
+        "red_flags": ["72時間以内のステロイド治療が予後規定", "急性治療を遅らせない"],
+        "next_steps": ["耳鼻科緊急コンサルト", "ステロイド全身投与", "純音聴力検査", "MRI(腫瘍除外)"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+    {
+        "id": "AUTONOMIC_DYSREFLEXIA",
+        "min_match": 1,
+        "keywords": ["自律神経過反射", "autonomic dysreflexia", "頸髄損傷 血圧上昇", "脊髄損傷 発汗"],
+        "diagnoses": [
+            {"disease": "自律神経過反射", "icd10": "G90.3", "base_prob": 0.78,
+             "boost_kw": ["頸髄損傷","脊髄損傷","血圧上昇","発汗","体温不安定","勃起","C5以上"]},
+            {"disease": "高血圧緊急症", "icd10": "I10", "base_prob": 0.12,
+             "boost_kw": ["高血圧","降圧薬","臓器障害"]},
+            {"disease": "迷走神経反射", "icd10": "R55", "base_prob": 0.10,
+             "boost_kw": ["迷走神経","刺激","立位"]},
+        ],
+        "red_flags": ["誘因除去が最優先（膀胱カテーテル閉塞・糞便嵌入）", "頭位挙上30°"],
+        "next_steps": ["誘因除去（膀胱留置カテーテル開通確認）", "座位/頭位挙上", "ニフェジピン舌下", "脊髄損傷専門病院へ"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+]
+
+EXTENDED_DD_RULES.extend(UNMATCHED_RULES)
