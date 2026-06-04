@@ -380,7 +380,26 @@ KEYWORD_PATCHES.update({
     # HYPOTHYROIDISM: 甲状腺特有キーワードで熱射病との競合を防ぐ
     "HYPOTHYROIDISM": {"add_keywords": ["便秘 徐脈", "著明な倦怠感 徐脈", "甲状腺 倦怠 徐脈", "体重増加5kg"], "min_match": 1},
     # HEAT_STROKE: 体温40℃以上+意識障害で確実にマッチ
-    "HEAT_STROKE": {"add_keywords": ["体温40.5", "体温40 意識障害", "屋外活動後 意識障害", "夏季 体温40"], "min_match": 1},
+    "HEAT_STROKE": {"add_keywords": ["体温40.5", "体温40 意識障害", "屋外活動後 意識障害", "夏季 体温40",
+                                     "長時間マラソン後 体温", "運動後 意識障害 体温40", "横紋筋融解 体温"], "min_match": 1},
+    # 化膿性関節炎: 単関節+発熱
+    "SEPTIC_ARTHRITIS": {"add_keywords": ["単発性関節炎 発熱", "膝関節 WBC16000", "右膝 発熱 CRP"], "min_match": 1},
+    # GBS: 胃腸炎後パターン
+    "GBS": {"add_keywords": ["先行する胃腸炎 反射消失", "胃腸炎 後 四肢麻痺", "下痢 後 脱力 反射消失"], "min_match": 1},
+    # PE: 術後SpO2低下追加
+    "PE": {"add_keywords": ["術後3日 SpO2低下", "SpO2低下 下肢浮腫 術後", "術後 息切れ SpO2"], "min_match": 1},
+    # CAP: 施設入所パターン
+    "CAP": {"add_keywords": ["微熱37.5 乾性咳嗽", "施設 発熱 咳嗽"], "min_match": 2},
+    # HUS: 発熱+血小板+溶血
+    "HUS": {"add_keywords": ["発熱 血小板減少 溶血性貧血", "溶血 血小板3万", "三徴 溶血 血小板 発熱"], "min_match": 1},
+    # ECLAMPSIA: 頭痛+視野+血圧160+妊娠
+    "ECLAMPSIA": {"add_keywords": ["血圧160/110 妊娠", "視野障害 妊娠 頭痛", "妊娠 頭痛 視野障害"], "min_match": 1},
+    # ANASTOMOTIC_LEAK: 術後腹痛膨満
+    "ANASTOMOTIC_LEAK": {"add_keywords": ["開腹術後2日目", "術後2日 腹痛 膨満", "大腸手術後 発熱 腹痛"], "min_match": 1},
+    # 自律神経過反射: 頸髄損傷後
+    "AUTONOMIC_DYSREFLEXIA": {"add_keywords": ["頸髄損傷後の発汗", "体温不安定 血圧変動", "頸髄損傷 発汗 体温"], "min_match": 1},
+    # ACUTE_GLAUCOMA: 急性視力喪失+眼痛
+    "ACUTE_GLAUCOMA": {"add_keywords": ["急性視力喪失", "角膜透明感消失", "激しい眼痛 視力"], "min_match": 1},
     # PRES: MRI後頭葉白質変化が鍵
     "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["MRI後頭葉白質", "白質変化 高血圧", "後頭葉白質 高血圧", "慢性腎不全 血圧上昇 MRI"], "min_match": 1},
     # 原発性アルドステロン症: 低K+高血圧が鍵
