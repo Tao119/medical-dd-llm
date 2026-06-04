@@ -2,13 +2,14 @@
 Total cases: 50 (Easy:20, Medium:20, Hard:10)
 
 Accuracy by difficulty:
-  Easy    : primary=100% / urgency=70% / ICD3=90% / rf_recall=90% / diff_cov=35%
+  Easy    : primary=95% / urgency=70% / ICD3=85% / rf_recall=85% / diff_cov=30%
   Medium  : primary=95% / urgency=75% / ICD3=90% / rf_recall=90% / diff_cov=40%
   Hard    : primary=100% / urgency=90% / ICD3=90% / rf_recall=90% / diff_cov=30%
 
-Overall: primary=98% / urgency=76% / ICD3=90% / rf_recall=90% / diff_cov=36%
+Overall: primary=96% / urgency=76% / ICD3=88% / rf_recall=88% / diff_cov=34%
 
-Top prediction errors (1 of 1 failed cases):
-  1. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+Top prediction errors (2 of 2 failed cases):
+  1. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
+  2. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
 
 Generated: benchmark_results.json

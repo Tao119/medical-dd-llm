@@ -393,6 +393,14 @@ KEYWORD_PATCHES.update({
     "HEAT_STROKE": {"add_keywords": ["無汗", "屋外活動後 意識障害", "体温40.5", "高温 無汗 意識"], "min_match": 1},
     "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["MRI後頭葉", "白質変化 高血圧", "後頭葉白質変化", "可逆性後白質"], "min_match": 1},
     "CAUDA_EQUINA": {"add_keywords": ["鞍状感覚消失", "膀胱直腸障害 両下肢", "両下肢脱力 排尿障害", "馬尾"], "min_match": 1},
+    # Hard ケース誤マッチ解消
+    "SYNCOPE": {"add_keywords": ["起立時心拍数増加40bpm", "起立性頻脈", "POTS"], "min_match": 1},
+    "POTS": {"add_keywords": ["起立時心拍数増加40bpm", "起立性失神 頻脈", "慢性疲労 起立", "失神前症状"], "min_match": 1},
+    "HEAT_STROKE": {"add_keywords": ["無汗 夏季", "核心温度上昇", "意識障害 40℃ 無汗", "夏季 皮膚乾燥 意識"], "min_match": 1},
+    # SLE: 蝶形発疹・ANA・補体などを強化 (line 348の上書きを統合)
+    "SLE": {"add_keywords": ["蝶形発疹", "ANA陽性", "補体低下", "タンパク尿 関節炎", "サーモンピンク発疹 関節炎"], "min_match": 1},
+    # アジソン病は副腎クリーゼと同等に処理
+    "ADRENAL_CRISIS": {"add_keywords": ["皮膚色素沈着", "アジソン", "慢性副腎不全", "副腎不全 低Na高K"], "min_match": 1},
     # 残余フォールバック解消パッチ
     "WERNICKE_ENCEPHALOPATHY": {"add_keywords": ["外眼筋麻痺", "小脳性歩行失調", "アルコール 眼球運動", "外眼筋 失調"], "min_match": 1},
     "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["血圧220/130", "腎機能障害 高血圧", "乳頭浮腫 視力 高血圧", "治療中断 高血圧"], "min_match": 1},
