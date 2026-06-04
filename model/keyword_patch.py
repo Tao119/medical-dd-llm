@@ -160,9 +160,14 @@ KEYWORD_PATCHES.update({
         "add_keywords": ["小球性低色素性", "フェリチン低値", "Plummer-Vinson", "月経過多 貧血"],
         "min_match": 1,
     },
-    # TTP
+    # TTP (成人・神経症状がキー)
     "TTP": {
-        "add_keywords": ["溶血性貧血 血小板減少 神経", "破砕赤血球", "ADAMTS13", "MAHA 発熱"],
+        "add_keywords": ["溶血性貧血 血小板減少 神経", "破砕赤血球 ADAMTS13", "神経症状 溶血 血小板", "MAHA 神経"],
+        "min_match": 2,
+    },
+    # HUS: O157/STEC が鍵 (TTPより優先)
+    "HUS": {
+        "add_keywords": ["O157", "STEC", "破砕赤血球 腎不全 血小板", "血性下痢 腎不全", "大腸菌O157"],
         "min_match": 1,
     },
     # ITP
@@ -372,7 +377,10 @@ KEYWORD_PATCHES.update({
     # 子癇前症: タンパク尿+高血圧+妊娠
     "ECLAMPSIA": {"add_keywords": ["タンパク尿 血圧160", "妊娠 浮腫 タンパク尿", "子癇前症", "妊娠高血圧"], "min_match": 1},
     # benchmark_200 対応 - 症状テキストマッチ強化
-    "HYPOTHYROIDISM": {"add_keywords": ["皮膚乾燥", "体重増加5", "著明な倦怠感 徐脈", "便秘 徐脈"], "min_match": 1},
+    # HYPOTHYROIDISM: 甲状腺特有キーワードで熱射病との競合を防ぐ
+    "HYPOTHYROIDISM": {"add_keywords": ["便秘 徐脈", "著明な倦怠感 徐脈", "甲状腺 倦怠 徐脈", "体重増加5kg"], "min_match": 1},
+    # HEAT_STROKE: 夏季・高温環境を必須に (皮膚乾燥のみでマッチしないよう)
+    "HEAT_STROKE": {"add_keywords": ["夏季 体温40", "高温 意識障害 体温", "核心温度 意識障害", "熱中症 重症 意識"], "min_match": 2},
     "ACUTE_LEUKEMIA": {"add_keywords": ["歯肉出血", "Hb 7", "WBC 150000", "出血傾向 貧血 発熱"], "min_match": 1},
     "CELLULITIS": {"add_keywords": ["下腿皮膚発赤", "腫脹 境界不明瞭", "下腿発赤", "皮膚発赤 腫脹"], "min_match": 1},
     "SEPTIC_ARTHRITIS": {"add_keywords": ["単発性関節炎", "膝関節 発熱 CRP", "関節単発 発熱"], "min_match": 1},

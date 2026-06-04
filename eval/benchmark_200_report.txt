@@ -3,21 +3,21 @@ Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
   Easy    : primary=85% / urgency=65% / ICD3=82% / rf_recall=53% / diff_cov=35%
-  Medium  : primary=51% / urgency=60% / ICD3=49% / rf_recall=30% / diff_cov=29%
-  Hard    : primary=48% / urgency=72% / ICD3=46% / rf_recall=22% / diff_cov=22%
+  Medium  : primary=50% / urgency=59% / ICD3=48% / rf_recall=29% / diff_cov=29%
+  Hard    : primary=52% / urgency=68% / ICD3=50% / rf_recall=21% / diff_cov=18%
 
-Overall: primary=60% / urgency=64% / ICD3=58% / rf_recall=35% / diff_cov=29%
+Overall: primary=61% / urgency=63% / ICD3=58% / rf_recall=34% / diff_cov=28%
 
-Top prediction errors (10 of 79 failed cases):
-  1. 熱射病 → predicted as '甲状腺機能低下症（橋本病）' (2 cases)
-  2. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
-  3. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
-  4. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
-  5. 化膿性関節炎 → predicted as '精査必要' (1 case)
-  6. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
-  7. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
-  8. コンパートメント症候群 → predicted as '多発外傷+出血性ショック' (1 case)
-  9. ギラン・バレー症候群 → predicted as '精査必要' (1 case)
-  10. 腸閉塞 → predicted as '急性虫垂炎' (1 case)
+Top prediction errors (10 of 78 failed cases):
+  1. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
+  2. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  3. 化膿性関節炎 → predicted as '精査必要' (1 case)
+  4. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
+  5. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
+  6. コンパートメント症候群 → predicted as '多発外傷+出血性ショック' (1 case)
+  7. ギラン・バレー症候群 → predicted as '精査必要' (1 case)
+  8. 腸閉塞 → predicted as '急性虫垂炎' (1 case)
+  9. 一過性脳虚血発作 → predicted as '急性脳梗塞' (1 case)
+  10. 悪性リンパ腫 → predicted as '肺結核' (1 case)
 
 Generated: benchmark_results.json
