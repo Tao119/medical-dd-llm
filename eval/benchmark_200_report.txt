@@ -2,22 +2,22 @@
 Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
-  Easy    : primary=87% / urgency=65% / ICD3=83% / rf_recall=54% / diff_cov=37%
-  Medium  : primary=44% / urgency=59% / ICD3=44% / rf_recall=27% / diff_cov=28%
-  Hard    : primary=38% / urgency=72% / ICD3=36% / rf_recall=24% / diff_cov=16%
+  Easy    : primary=88% / urgency=67% / ICD3=85% / rf_recall=56% / diff_cov=37%
+  Medium  : primary=47% / urgency=58% / ICD3=46% / rf_recall=28% / diff_cov=28%
+  Hard    : primary=44% / urgency=72% / ICD3=42% / rf_recall=24% / diff_cov=20%
 
-Overall: primary=56% / urgency=64% / ICD3=54% / rf_recall=34% / diff_cov=28%
+Overall: primary=58% / urgency=64% / ICD3=56% / rf_recall=35% / diff_cov=28%
 
-Top prediction errors (10 of 89 failed cases):
-  1. ギラン・バレー症候群 → predicted as '精査必要' (2 cases)
-  2. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
-  3. 高血圧性脳症 → predicted as '精査必要' (2 cases)
-  4. DRESS症候群 → predicted as '精査必要' (2 cases)
-  5. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
-  6. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
-  7. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
-  8. 化膿性関節炎 → predicted as '精査必要' (1 case)
-  9. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
-  10. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
+Top prediction errors (10 of 83 failed cases):
+  1. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
+  2. 高血圧性脳症 → predicted as '精査必要' (2 cases)
+  3. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
+  4. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
+  5. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  6. ギラン・バレー症候群 → predicted as '精査必要' (1 case)
+  7. 化膿性関節炎 → predicted as '精査必要' (1 case)
+  8. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
+  9. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
+  10. コンパートメント症候群 → predicted as '多発外傷+出血性ショック' (1 case)
 
 Generated: benchmark_results.json

@@ -360,8 +360,17 @@ KEYWORD_PATCHES.update({
     "MULTIPLE_MYELOMA": {"add_keywords": ["全身骨痛 高Ca", "Ca 13", "骨痛 Ca 腎機能", "BJP陽性"], "min_match": 1},
     # 低ナトリウム血症 → AKI or SIADH でキャッチ
     "AKI": {"add_keywords": ["Na 118", "低ナトリウム", "水分過剰 意識障害", "マラソン後 意識障害"], "min_match": 1},
-    # GBS - 2週間前上気道炎パターン
-    "GBS": {"add_keywords": ["2週間前 感染症", "先行する感染症 麻痺", "上気道炎 後 麻痺", "感染後 四肢脱力"], "min_match": 1},
+    # GBS - 2週間前上気道炎・胃腸炎パターン
+    "GBS": {"add_keywords": ["2週間前 感染症", "先行する感染症 麻痺", "上気道炎 後 麻痺", "感染後 四肢脱力",
+                              "先行する胃腸炎", "胃腸炎 後 麻痺", "下痢症 後 脱力"], "min_match": 1},
+    # 高血圧性脳症: 乳頭浮腫+高血圧
+    "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["乳頭浮腫", "血圧220", "高血圧 乳頭浮腫", "血圧220/130"], "min_match": 1},
+    # DRESS: 薬剤開始週後+好酸球
+    "DRESS_SYNDROME": {"add_keywords": ["薬剤開始 週後", "好酸球 肝機能 薬剤", "好酸球4000", "好酸球5000", "アロプリノール 皮疹"], "min_match": 1},
+    # PCP: CD4低値+乾性咳+LDH
+    "PCP_PNEUMONIA": {"add_keywords": ["CD4 120", "CD4 80", "LDH高値 低酸素", "乾性咳嗽 低酸素 HIV", "肺胞洗浄液"], "min_match": 1},
+    # 子癇前症: タンパク尿+高血圧+妊娠
+    "ECLAMPSIA": {"add_keywords": ["タンパク尿 血圧160", "妊娠 浮腫 タンパク尿", "子癇前症", "妊娠高血圧"], "min_match": 1},
     # benchmark_200 対応 - 症状テキストマッチ強化
     "HYPOTHYROIDISM": {"add_keywords": ["皮膚乾燥", "体重増加5", "著明な倦怠感 徐脈", "便秘 徐脈"], "min_match": 1},
     "ACUTE_LEUKEMIA": {"add_keywords": ["歯肉出血", "Hb 7", "WBC 150000", "出血傾向 貧血 発熱"], "min_match": 1},

@@ -2206,3 +2206,85 @@ FIXUP_RULES = [
 ]
 
 EXTENDED_DD_RULES.extend(FIXUP_RULES)
+
+# ── 旅行医学・特殊感染症ルール ─────────────────────────────────
+TRAVEL_RULES = [
+    {
+        "id": "TRAVELER_DIARRHEA",
+        "min_match": 1,
+        "keywords": ["旅行者下痢症", "海外旅行後 下痢", "旅行後 水様性下痢", "海外旅行（インド）", "発展途上国 下痢"],
+        "diagnoses": [
+            {"disease": "旅行者下痢症", "icd10": "A09", "base_prob": 0.70,
+             "boost_kw": ["海外旅行","下痢","腹痛","発熱","血便","インド","東南アジア"]},
+            {"disease": "腸チフス", "icd10": "A01.0", "base_prob": 0.12,
+             "boost_kw": ["段階的発熱","バラ疹","脾腫","海外渡航"]},
+            {"disease": "アメーバ性大腸炎", "icd10": "A06.0", "base_prob": 0.10,
+             "boost_kw": ["血便","アメーバ","潜伏長い"]},
+            {"disease": "マラリア", "icd10": "B54", "base_prob": 0.08,
+             "boost_kw": ["高熱","悪寒","蚊","アフリカ","熱帯"]},
+        ],
+        "red_flags": ["脱水→輸液管理", "血便あれば大腸炎・赤痢を疑う"],
+        "next_steps": ["便培養+虫卵・寄生虫", "輸液+電解質補正", "フルオロキノロン or アジスロマイシン", "感染症科"],
+        "scoring_hints": [],
+        "urgency_override": None,
+    },
+    {
+        "id": "MALARIA",
+        "min_match": 1,
+        "keywords": ["マラリア", "アフリカ旅行", "マラリア流行地", "周期的高熱 蚊", "熱帯地域旅行 発熱"],
+        "diagnoses": [
+            {"disease": "マラリア", "icd10": "B54", "base_prob": 0.72,
+             "boost_kw": ["アフリカ","東南アジア","蚊","周期熱","悪寒","マラリア流行"]},
+            {"disease": "デング熱", "icd10": "A97", "base_prob": 0.15,
+             "boost_kw": ["発疹","血小板減少","眼窩痛","関節痛"]},
+            {"disease": "腸チフス", "icd10": "A01.0", "base_prob": 0.08,
+             "boost_kw": ["段階的発熱","バラ疹","脾腫","便秘"]},
+            {"disease": "ウイルス性出血熱", "icd10": "A99", "base_prob": 0.05,
+             "boost_kw": ["エボラ","ラッサ","出血傾向"]},
+        ],
+        "red_flags": ["熱帯熱マラリア（P.falciparum）は致死的", "輸血・臓器移植での感染も報告"],
+        "next_steps": ["末梢血塗抹（厚層+薄層）", "RDT（迅速抗原）", "PCR", "感染症科緊急コンサルト"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+    {
+        "id": "WERNICKE_ENCEPHALOPATHY",
+        "min_match": 1,
+        "keywords": ["ウェルニッケ脳症", "外眼筋麻痺 意識障害", "眼球運動障害 失調 意識", "チアミン欠乏 神経"],
+        "diagnoses": [
+            {"disease": "ウェルニッケ脳症", "icd10": "E51.2", "base_prob": 0.72,
+             "boost_kw": ["アルコール","外眼筋麻痺","失調","意識障害","チアミン","栄養不良"]},
+            {"disease": "アルコール性脳症", "icd10": "G31.2", "base_prob": 0.12,
+             "boost_kw": ["慢性アルコール","認知機能低下","慢性"]},
+            {"disease": "肝性脳症", "icd10": "K72.9", "base_prob": 0.10,
+             "boost_kw": ["肝硬変","アンモニア","フラッピング"]},
+            {"disease": "低血糖昏睡", "icd10": "E16.0", "base_prob": 0.06,
+             "boost_kw": ["インスリン","血糖","糖尿病"]},
+        ],
+        "red_flags": ["チアミン100-200mg静注を即投与（グルコース前に）", "ブドウ糖先行でWernicke悪化"],
+        "next_steps": ["チアミン静注（グルコース前に）", "血中チアミン測定", "MRI（乳頭体・被蓋部T2高信号）"],
+        "scoring_hints": [],
+        "urgency_override": "immediate",
+    },
+    {
+        "id": "LEPTOSPIROSIS",
+        "min_match": 1,
+        "keywords": ["レプトスピラ症", "洪水後 発熱", "農業 泥水 発熱", "結膜下出血 筋肉痛 黄疸"],
+        "diagnoses": [
+            {"disease": "レプトスピラ症", "icd10": "A27.9", "base_prob": 0.72,
+             "boost_kw": ["洪水","泥水","農業","結膜下出血","筋肉痛","黄疸","腎不全","ワイル病"]},
+            {"disease": "ウイルス性肝炎", "icd10": "B19", "base_prob": 0.12,
+             "boost_kw": ["黄疸","肝機能","A/B/C型"]},
+            {"disease": "敗血症", "icd10": "A41.9", "base_prob": 0.10,
+             "boost_kw": ["感染源","CRP上昇","臓器不全"]},
+            {"disease": "リケッチア感染症", "icd10": "A79.9", "base_prob": 0.06,
+             "boost_kw": ["ダニ","マダニ","発疹"]},
+        ],
+        "red_flags": ["ワイル病（黄疸型）は死亡率10-40%", "腎不全→透析適応"],
+        "next_steps": ["レプトスピラ抗体(MAT)", "ペニシリンG or ドキシサイクリン", "腎機能モニタリング"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+]
+
+EXTENDED_DD_RULES.extend(TRAVEL_RULES)
