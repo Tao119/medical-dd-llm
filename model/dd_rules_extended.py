@@ -2063,3 +2063,102 @@ BENCHMARK_200_RULES = [
 ]
 
 EXTENDED_DD_RULES.extend(BENCHMARK_200_RULES)
+
+# ── 競合解消・追加ルール ─────────────────────────────────────────
+COMPETITION_RULES = [
+    {
+        "id": "HHS",
+        "min_match": 1,
+        "keywords": ["高浸透圧", "血糖600以上", "血糖700", "血糖780", "高血糖 高浸透圧", "HHS"],
+        "diagnoses": [
+            {"disease": "高浸透圧高血糖症候群（HHS）", "icd10": "E11.0", "base_prob": 0.80,
+             "boost_kw": ["血糖600","高浸透圧","2型糖尿病","脱水","意識低下","ケトーシス軽度"]},
+            {"disease": "糖尿病性ケトアシドーシス（DKA）", "icd10": "E10.1", "base_prob": 0.12,
+             "boost_kw": ["1型","ケトン体","pH<7.3","クスマウル"]},
+            {"disease": "敗血症性脳症", "icd10": "A41.9", "base_prob": 0.08,
+             "boost_kw": ["感染源","高熱","CRP"]},
+        ],
+        "red_flags": ["高浸透圧→急速補正で脳浮腫", "血糖600以上+意識障害"],
+        "next_steps": ["血糖/浸透圧/電解質", "緩徐な輸液(100mL/h程度)", "インスリン(少量から)", "原因精査"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+    {
+        "id": "CO_POISONING",
+        "min_match": 1,
+        "keywords": ["一酸化炭素", "CO中毒", "COHb", "密閉空間 頭痛", "冬季 密閉 意識障害"],
+        "diagnoses": [
+            {"disease": "一酸化炭素中毒", "icd10": "T58", "base_prob": 0.82,
+             "boost_kw": ["COHb","密閉空間","冬季","暖房","一家全員","頭痛 嘔気"]},
+            {"disease": "低血糖", "icd10": "E16.0", "base_prob": 0.08,
+             "boost_kw": ["糖尿病","インスリン","血糖"]},
+            {"disease": "心筋梗塞", "icd10": "I21.9", "base_prob": 0.07,
+             "boost_kw": ["胸痛","TnI","ST変化"]},
+            {"disease": "脳卒中", "icd10": "I63.9", "base_prob": 0.03,
+             "boost_kw": ["片麻痺","失語","突然"]},
+        ],
+        "red_flags": ["高流量酸素投与（100% O2）が第一選択", "COHb>25%→高圧酸素療法"],
+        "next_steps": ["100%酸素投与", "COHb測定", "ECG(STミメ変化)", "高圧酸素療法検討"],
+        "scoring_hints": [],
+        "urgency_override": "immediate",
+    },
+    {
+        "id": "BRUCELLOSIS",
+        "min_match": 1,
+        "keywords": ["ブルセラ", "ヤギ 発熱", "牛 乳製品 発熱", "動物接触 関節痛", "農場 発熱"],
+        "diagnoses": [
+            {"disease": "ブルセラ症", "icd10": "A23.9", "base_prob": 0.70,
+             "boost_kw": ["動物接触","ヤギ","牛","乳製品","農場","地中海","イラク"]},
+            {"disease": "腸チフス", "icd10": "A01.0", "base_prob": 0.15,
+             "boost_kw": ["海外渡航","段階的発熱","バラ疹"]},
+            {"disease": "感染性心内膜炎", "icd10": "I33.0", "base_prob": 0.10,
+             "boost_kw": ["心雑音","塞栓症状","弁膜症"]},
+            {"disease": "SLE", "icd10": "M32.9", "base_prob": 0.05,
+             "boost_kw": ["ANA","補体","蝶形発疹"]},
+        ],
+        "red_flags": ["ドキシサイクリン+リファンピシン6週間", "届出感染症（4類）"],
+        "next_steps": ["ブルセラ血清凝集試験", "血液培養(長期培養)", "ドキシサイクリン+リファンピシン", "感染症科"],
+        "scoring_hints": [],
+        "urgency_override": None,
+    },
+    {
+        "id": "POTS",
+        "min_match": 1,
+        "keywords": ["体位性頻脈", "POTS", "起立時頻脈", "立位 頻脈 めまい", "起立性不耐症"],
+        "diagnoses": [
+            {"disease": "体位性頻脈症候群（POTS）", "icd10": "G90.3", "base_prob": 0.65,
+             "boost_kw": ["起立時HR増加30以上","若年女性","自律神経","立位 症状","COVID後"]},
+            {"disease": "起立性低血圧", "icd10": "I95.1", "base_prob": 0.20,
+             "boost_kw": ["起立時血圧低下","高齢","降圧薬","自律神経障害"]},
+            {"disease": "血管迷走神経反射", "icd10": "R55", "base_prob": 0.10,
+             "boost_kw": ["誘発因子","前駆症状","徐脈","失神"]},
+            {"disease": "貧血", "icd10": "D64.9", "base_prob": 0.05,
+             "boost_kw": ["Hb低下","月経過多"]},
+        ],
+        "red_flags": ["除外診断（二次性POTSを除外）"],
+        "next_steps": ["起立試験(10分)", "自律神経機能検査", "塩分+水分負荷", "コンプレッション下着"],
+        "scoring_hints": [],
+        "urgency_override": None,
+    },
+    {
+        "id": "ICAD_INTRACRANIAL_PRESSURE",
+        "min_match": 1,
+        "keywords": ["頭蓋内圧亢進", "ICP", "乳頭浮腫 頭痛", "Cushing三徴", "脳ヘルニア"],
+        "diagnoses": [
+            {"disease": "頭蓋内圧亢進症", "icd10": "G93.2", "base_prob": 0.68,
+             "boost_kw": ["乳頭浮腫","Cushing三徴","意識障害","脳ヘルニア","頭痛 嘔吐悪化"]},
+            {"disease": "脳腫瘍", "icd10": "C71.9", "base_prob": 0.15,
+             "boost_kw": ["進行性","局所神経症状","夜間早朝頭痛"]},
+            {"disease": "水頭症", "icd10": "G91.9", "base_prob": 0.10,
+             "boost_kw": ["脳室拡大","歩行障害","認知症"]},
+            {"disease": "静脈洞血栓症", "icd10": "G08", "base_prob": 0.07,
+             "boost_kw": ["妊娠","ピル","脱水","MRV"]},
+        ],
+        "red_flags": ["Cushing三徴→脳ヘルニア切迫", "即刻マンニトール+頭部挙上30°"],
+        "next_steps": ["頭部CT/MRI", "マンニトール", "神経外科緊急コール", "過換気(一時的)"],
+        "scoring_hints": [],
+        "urgency_override": "immediate",
+    },
+]
+
+EXTENDED_DD_RULES.extend(COMPETITION_RULES)

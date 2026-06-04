@@ -329,6 +329,13 @@ KEYWORD_PATCHES.update({
     "SYSTEMIC_SCLEROSIS": {"add_keywords": ["強皮症", "レイノー 皮膚硬化", "全身性強皮症", "抗Scl-70"], "min_match": 1},
     "POSTERIOR_CIRCULATION_STROKE": {"add_keywords": ["後方循環", "椎骨脳底動脈", "小脳梗塞", "めまい 複視 失調", "HINTS"], "min_match": 1},
     "IBD_CROHN": {"add_keywords": ["クローン病", "Crohn", "肛門病変 腸炎", "非連続性病変", "回盲部病変"], "min_match": 1},
+    # 大動脈解離: 血圧左右差+縦隔拡大でACSより優先
+    "AORTA": {"add_keywords": ["血圧左右差 縦隔", "縦隔拡大 胸痛", "血圧左右差 胸痛", "前胸部 縦隔拡大"], "min_match": 1},
+    # HHS: HHSルールを別途追加、DKAはmin_match=1維持
+    # CO中毒: CO_POISONINGルールを追加済み。HYPERCALCEMIA はmin_match=2で厳格に
+    "HYPERCALCEMIA": {"add_keywords": ["悪性腫瘍 高Ca", "悪性 高カルシウム"], "min_match": 2},
+    # SLE: 蝶形発疹・蛋白尿等の特異的キーワードで区別 (min_match=1維持)
+    "SLE": {"add_keywords": ["蝶形発疹", "ANA陽性", "補体低下", "タンパク尿 関節炎"], "min_match": 1},
     # PE - 術後SpO2低下パターン (長期臥床+呼吸困難が重複必要)
     "PE": {"add_keywords": ["腹部手術後 SpO2", "術後 SpO2低下", "術後3日 呼吸困難", "腹部手術後3日"], "min_match": 1},
     # CAP - 施設・認知症パターン (min_match=2 必須: 発熱単独は競合)
