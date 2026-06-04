@@ -143,6 +143,175 @@ KEYWORD_PATCHES.update({
     # 悪性リンパ腫ルールを新規追加（関数の外でappend）
 })
 
+# ── 専門科ルール追加分キーワードパッチ ──────────────────────────
+KEYWORD_PATCHES.update({
+    # 急性白血病
+    "ACUTE_LEUKEMIA": {
+        "add_keywords": ["白血病 出血", "白血病 発熱 貧血", "芽球 骨髄抑制", "AML ALL 診断", "血球減少 発熱"],
+        "min_match": 1,
+    },
+    # 悪性貧血
+    "PERNICIOUS_ANEMIA": {
+        "add_keywords": ["B12欠乏 貧血", "大球性貧血 神経症状", "内因子欠乏", "MCV高値 神経"],
+        "min_match": 1,
+    },
+    # 鉄欠乏性貧血
+    "IRON_DEFICIENCY_ANEMIA": {
+        "add_keywords": ["小球性低色素性", "フェリチン低値", "Plummer-Vinson", "月経過多 貧血"],
+        "min_match": 1,
+    },
+    # TTP
+    "TTP": {
+        "add_keywords": ["溶血性貧血 血小板減少 神経", "破砕赤血球", "ADAMTS13", "MAHA 発熱"],
+        "min_match": 1,
+    },
+    # ITP
+    "ITP": {
+        "add_keywords": ["血小板減少 出血斑のみ", "孤立性血小板減少 骨髄正常", "抗血小板抗体"],
+        "min_match": 1,
+    },
+    # 多発性骨髄腫
+    "MULTIPLE_MYELOMA": {
+        "add_keywords": ["CRAB基準", "骨痛 高Ca 腎不全 貧血", "免疫グロブリン異常", "形質細胞腫"],
+        "min_match": 1,
+    },
+    # 過白血球症
+    "HYPERLEUKOCYTOSIS": {
+        "add_keywords": ["白血球著増 呼吸不全", "WBC10万以上", "白血球分離"],
+        "min_match": 1,
+    },
+    # SJS
+    "SJS": {
+        "add_keywords": ["薬疹 粘膜びらん", "Stevens-Johnson", "SCORTEN", "皮膚剥離 薬剤"],
+        "min_match": 1,
+    },
+    # TEN
+    "TEN": {
+        "add_keywords": ["表皮広範囲剥離", "Lyell症候群", "ニコルスキー 皮疹", "致死的薬疹"],
+        "min_match": 1,
+    },
+    # 蜂窩織炎
+    "CELLULITIS": {
+        "add_keywords": ["皮膚発赤腫脹 境界不明瞭", "下腿発赤 腫脹", "蜂窩織炎 抗菌薬"],
+        "min_match": 1,
+    },
+    # 壊死性筋膜炎
+    "NECROTIZING_FASCIITIS": {
+        "add_keywords": ["筋膜炎 急速進行", "痛みが激しい 皮膚変色", "捻髪音 外傷後", "壊死性感染"],
+        "min_match": 1,
+    },
+    # 帯状疱疹
+    "HERPES_ZOSTER": {
+        "add_keywords": ["片側水疱 神経痛", "VZV再活性化", "分節状皮疹", "ゾスタ"],
+        "min_match": 1,
+    },
+    # 薬疹
+    "DRUG_ERUPTION": {
+        "add_keywords": ["薬剤開始後 皮疹", "薬物過敏", "DRESS症候群", "固定薬疹"],
+        "min_match": 1,
+    },
+    # CRAO
+    "CRAO": {
+        "add_keywords": ["突然視力消失 片眼", "cherry red spot", "網膜虚血", "視力消失 痛みなし 高齢"],
+        "min_match": 1,
+    },
+    # 網膜剥離
+    "RETINAL_DETACHMENT": {
+        "add_keywords": ["視野のカーテン", "飛蚊症 光視症 急増", "網膜はがれ", "視野が欠ける"],
+        "min_match": 1,
+    },
+    # GCA
+    "GCA_VISION": {
+        "add_keywords": ["側頭動脈炎", "顎が痛い 高齢 頭痛", "ESR著明上昇 高齢", "視力消失 高齢 側頭部痛"],
+        "min_match": 1,
+    },
+    # 急性統合失調症
+    "ACUTE_PSYCHOSIS": {
+        "add_keywords": ["幻聴 妄想 急性", "精神病急性発症", "統合失調症 初発"],
+        "min_match": 1,
+    },
+    # 躁状態
+    "BIPOLAR_MANIA": {
+        "add_keywords": ["躁状態 睡眠不要", "誇大妄想 活動亢進", "双極性 躁エピソード"],
+        "min_match": 1,
+    },
+    # 重篤なうつ病
+    "SEVERE_DEPRESSION": {
+        "add_keywords": ["死にたい 抑うつ", "自殺念慮 強い", "うつ病 精神運動抑制"],
+        "min_match": 1,
+    },
+    # アルコール離脱
+    "ALCOHOL_WITHDRAWAL": {
+        "add_keywords": ["断酒後 振戦 発汗", "アルコール依存症 禁断", "CIWA 離脱症状", "飲酒中断 けいれん"],
+        "min_match": 1,
+    },
+    # 精巣捻転
+    "TESTICULAR_TORSION": {
+        "add_keywords": ["精巣痛 突然 若年", "睾丸捻転", "陰嚢 急性疼痛", "精巣血流消失"],
+        "min_match": 1,
+    },
+    # 急性前立腺炎
+    "ACUTE_PROSTATITIS": {
+        "add_keywords": ["前立腺痛み 高熱", "会陰部激痛 発熱", "前立腺炎 排尿困難 発熱"],
+        "min_match": 1,
+    },
+    # コンパートメント症候群
+    "COMPARTMENT_SYNDROME": {
+        "add_keywords": ["外傷後 筋硬直 激痛", "5P症状 外傷", "区画内圧上昇", "筋膜切開"],
+        "min_match": 1,
+    },
+    # 化膿性関節炎
+    "SEPTIC_ARTHRITIS": {
+        "add_keywords": ["関節液混濁 発熱", "膿関節炎", "単関節 CRP著増 発熱"],
+        "min_match": 1,
+    },
+    # 痛風
+    "GOUT_ATTACK": {
+        "add_keywords": ["足親指 急性炎症", "痛風 尿酸高い", "MTP関節 急性疼痛", "痛風 夜間発作"],
+        "min_match": 1,
+    },
+    # 偽痛風
+    "PSEUDOGOUT": {
+        "add_keywords": ["膝関節 急性炎症 高齢", "軟骨石灰化 急性関節炎", "CPPD関節炎"],
+        "min_match": 1,
+    },
+    # 骨粗鬆症性骨折
+    "OSTEOPOROTIC_FRACTURE": {
+        "add_keywords": ["高齢女性 腰痛 急性", "骨粗鬆症 椎体骨折", "身長が縮む 腰痛"],
+        "min_match": 1,
+    },
+    # OHSS
+    "OHSS": {
+        "add_keywords": ["体外受精後 腹水", "排卵誘発 腹痛 腫脹", "不妊治療 呼吸困難"],
+        "min_match": 1,
+    },
+    # 前置胎盤
+    "PLACENTA_PREVIA": {
+        "add_keywords": ["妊娠後半 出血 痛みなし", "妊娠 鮮血 無痛", "前置胎盤 帝王切開"],
+        "min_match": 1,
+    },
+    # 常位胎盤早期剥離
+    "PLACENTAL_ABRUPTION": {
+        "add_keywords": ["妊娠 腹痛 板状硬", "胎盤剥離 出血", "妊娠後期 突然腹痛 胎児仮死"],
+        "min_match": 1,
+    },
+    # 原発性アルドステロン症
+    "PRIMARY_ALDOSTERONISM": {
+        "add_keywords": ["低K 高血圧 コン症候群", "アルドステロン過剰", "副腎腫瘍 高血圧 低K"],
+        "min_match": 1,
+    },
+    # 高プロラクチン血症
+    "HYPERPROLACTINEMIA": {
+        "add_keywords": ["乳汁 無月経 下垂体", "プロラクチン高値 無排卵", "下垂体腺腫 乳汁分泌"],
+        "min_match": 1,
+    },
+    # 先端巨大症
+    "ACROMEGALY": {
+        "add_keywords": ["手足大きい 顔変化", "GH過剰 下垂体", "IGF-1高値 先端肥大"],
+        "min_match": 1,
+    },
+})
+
 
 def apply_patches(rules: list) -> list:
     """EXTENDED_DD_RULES にキーワードパッチを適用して返す"""

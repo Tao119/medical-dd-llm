@@ -55,6 +55,50 @@ RED_FLAG_PATCHES = {
     "TIA":           ["脳卒中リスク", "ABCD2スコア", "48h以内脳卒中"],
     "DELIRIUM":      ["低酸素", "低血糖除外", "原因精査"],
     "DRUG_OD":       ["原因薬剤中止", "解毒薬", "中毒センター"],
+    # 血液内科
+    "ACUTE_LEUKEMIA":    ["DIC合併", "骨髄抑制", "血液内科緊急", "腫瘍崩壊症候群"],
+    "PERNICIOUS_ANEMIA": ["神経症状", "亜急性連合変性症", "B12補充"],
+    "IRON_DEFICIENCY_ANEMIA": ["消化管出血", "大腸癌除外", "便潜血"],
+    "TTP":               ["血漿交換緊急", "ADAMTS13", "血小板輸血禁忌"],
+    "ITP":               ["出血リスク", "血小板<10000", "頭蓋内出血"],
+    "MULTIPLE_MYELOMA":  ["高Ca血症", "脊髄圧迫", "腎不全"],
+    "HYPERLEUKOCYTOSIS": ["白血球分離", "腫瘍崩壊症候群", "輸血禁忌"],
+    # 皮膚科
+    "SJS":               ["原因薬剤中止", "SCORTEN評価", "熱傷センター搬送"],
+    "TEN":               ["ICU緊急入院", "SCORTEN≥3", "死亡率30%超"],
+    "CELLULITIS":        ["壊死性筋膜炎鑑別", "LRINEC評価", "外科緊急"],
+    "NECROTIZING_FASCIITIS": ["外科的デブリードマン緊急", "数時間遅延で死亡", "広域抗菌薬"],
+    "HERPES_ZOSTER":     ["眼部帯状疱疹", "角膜炎", "抗ウイルス薬72時間以内"],
+    "DRUG_ERUPTION":     ["SJS/TEN除外", "原因薬剤中止", "粘膜病変確認"],
+    # 眼科
+    "CRAO":              ["90分以内治療", "眼球マッサージ", "GCA除外"],
+    "RETINAL_DETACHMENT": ["眼科外科的緊急", "黄斑剥離前手術", "6時間以内"],
+    "GCA_VISION":        ["ステロイド即投与", "生検前治療開始", "両眼失明リスク"],
+    # 精神科
+    "ACUTE_PSYCHOSIS":   ["器質性疾患除外", "自傷他害リスク", "精神科緊急"],
+    "BIPOLAR_MANIA":     ["自傷他害リスク", "気分安定薬", "入院評価"],
+    "SEVERE_DEPRESSION": ["希死念慮評価", "自殺リスク", "精神科緊急入院"],
+    "ALCOHOL_WITHDRAWAL": ["CIWA評価", "振戦せん妄リスク", "チアミン投与"],
+    # 泌尿器科
+    "TESTICULAR_TORSION": ["6時間以内手術", "精巣温存", "エコー待ち遅延禁忌"],
+    "ACUTE_PROSTATITIS":  ["前立腺マッサージ禁忌", "血液培養", "抗菌薬緊急"],
+    "RENAL_CELL_CARCINOMA": ["下大静脈血栓", "血尿精査", "泌尿器科コンサルト"],
+    "BLADDER_CANCER":    ["肉眼的血尿", "膀胱鏡必須", "癌除外"],
+    # 整形外科
+    "SEPTIC_ARTHRITIS":  ["関節洗浄緊急", "Gram染色+培養", "整形外科緊急"],
+    "GOUT_ATTACK":       ["化膿性鑑別", "関節穿刺", "尿酸降下療法急性期禁忌"],
+    "PSEUDOGOUT":        ["化膿性関節炎除外", "関節穿刺", "結晶確認"],
+    "OSTEOPOROTIC_FRACTURE": ["脊髄圧迫", "転移性骨腫瘍除外", "MRI緊急"],
+    "COMPARTMENT_SYNDROME": ["筋膜切開緊急", "6時間以内", "区画内圧30mmHg"],
+    # 産婦人科
+    "OHSS":              ["血栓リスク", "輸液管理", "産婦人科入院"],
+    "PLACENTA_PREVIA":   ["内診禁忌", "帝王切開準備", "輸血準備"],
+    "PLACENTAL_ABRUPTION": ["胎児仮死", "緊急帝王切開", "DIC合併"],
+    # 内分泌
+    "PRIMARY_ALDOSTERONISM": ["ARR測定", "降圧抵抗性", "副腎CT"],
+    "HYPERPROLACTINEMIA": ["視交叉圧迫", "眼科視野検査", "下垂体MRI"],
+    "ACROMEGALY":        ["視野障害", "心肥大評価", "睡眠時無呼吸"],
+    "PSORIASIS":         ["膿疱性乾癬", "生物学的製剤", "関節障害"],
 }
 
 
