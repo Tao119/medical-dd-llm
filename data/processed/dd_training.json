@@ -1,0 +1,17 @@
+[
+  {
+    "instruction": "以下の患者情報をもとに鑑別診断をJSON形式で行ってください。\n\n主訴: 胸痛・息切れ\n症状: 前胸部圧迫感, 冷汗, 左肩への放散痛, 呼吸困難\nバイタル: BP 90/60, HR 110, SpO2 94%, RR 24\n既往歴: 高血圧・糖尿病・喫煙歴20年\n患者背景: 65歳男性",
+    "input": "",
+    "output": "{\n  \"primary\": {\n    \"disease\": \"急性冠症候群（ACS）\",\n    \"probability\": 0.72,\n    \"basis\": \"典型的な胸痛+冷汗+放散痛+危険因子\",\n    \"source_refs\": []\n  },\n  \"differentials\": [\n    {\n      \"disease\": \"大動脈解離\",\n      \"probability\": 0.15,\n      \"distinguishing_features\": \"血圧左右差・引き裂く痛み\"\n    },\n    {\n      \"disease\": \"肺塞栓症\",\n      \"probability\": 0.08,\n      \"distinguishing_features\": \"片側下肢浮腫・旅行歴\"\n    },\n    {\n      \"disease\": \"急性心膜炎\",\n      \"probability\": 0.05,\n      \"distinguishing_features\": \"体位による痛みの変化\"\n    }\n  ],\n  \"red_flags\": [\n    \"BP 90/60 (ショック)\",\n    \"SpO2 94%\",\n    \"糖尿病性無症候性梗塞の可能性\"\n  ],\n  \"next_steps\": [\n    \"12誘導心電図\",\n    \"採血(TnI, CK-MB, BNP)\",\n    \"胸部X線\",\n    \"循環器緊急コール\"\n  ],\n  \"urgency\": \"immediate\"\n}"
+  },
+  {
+    "instruction": "以下の患者情報をもとに鑑別診断をJSON形式で行ってください。\n\n主訴: 突然の激頭痛\n症状: 突発する「人生最悪」の頭痛, 嘔吐, 項部硬直, 光過敏\nバイタル: BP 170/100, HR 88, 体温 37.2\n既往歴: 喫煙歴・家族性脳動脈瘤なし\n患者背景: 42歳女性",
+    "input": "",
+    "output": "{\n  \"primary\": {\n    \"disease\": \"くも膜下出血（SAH）\",\n    \"probability\": 0.78,\n    \"basis\": \"thunderclap headache + 項部硬直\",\n    \"source_refs\": []\n  },\n  \"differentials\": [\n    {\n      \"disease\": \"細菌性髄膜炎\",\n      \"probability\": 0.12,\n      \"distinguishing_features\": \"発熱・意識障害・皮疹\"\n    },\n    {\n      \"disease\": \"高血圧性頭痛\",\n      \"probability\": 0.06,\n      \"distinguishing_features\": \"徐々に増強・BP制御で改善\"\n    },\n    {\n      \"disease\": \"偏頭痛\",\n      \"probability\": 0.04,\n      \"distinguishing_features\": \"既往歴・前兆\"\n    }\n  ],\n  \"red_flags\": [\n    \"thunderclap headache = SAH否定まで緊急扱い\",\n    \"項部硬直\"\n  ],\n  \"next_steps\": [\n    \"頭部CT（造影なし）\",\n    \"LP（CT正常ならキサントクロミア確認）\",\n    \"脳外科コール\"\n  ],\n  \"urgency\": \"immediate\"\n}"
+  },
+  {
+    "instruction": "以下の患者情報をもとに鑑別診断をJSON形式で行ってください。\n\n主訴: 発熱・咳嗽 3日間\n症状: 38.5℃発熱, 湿性咳嗽, 右下肺の打診濁音\nバイタル: BP 128/82, HR 96, SpO2 96%, RR 20\n既往歴: 特になし\n患者背景: 35歳男性",
+    "input": "",
+    "output": "{\n  \"primary\": {\n    \"disease\": \"市中肺炎（CAP）\",\n    \"probability\": 0.8,\n    \"basis\": \"発熱+湿性咳嗽+打診濁音\",\n    \"source_refs\": []\n  },\n  \"differentials\": [\n    {\n      \"disease\": \"結核\",\n      \"probability\": 0.08,\n      \"distinguishing_features\": \"海外渡航歴・夜間発汗・長期経過\"\n    },\n    {\n      \"disease\": \"肺癌+閉塞性肺炎\",\n      \"probability\": 0.07,\n      \"distinguishing_features\": \"喫煙歴・繰り返す肺炎\"\n    },\n    {\n      \"disease\": \"非定型肺炎\",\n      \"probability\": 0.05,\n      \"distinguishing_features\": \"乾性咳・β-ラクタム無効\"\n    }\n  ],\n  \"red_flags\": [\n    \"PSI/CURB-65スコアで重症度判定必須\"\n  ],\n  \"next_steps\": [\n    \"胸部X線\",\n    \"採血(CBC, CRP, PCT)\",\n    \"喀痰グラム染色+培養\",\n    \"PSIスコア算定\"\n  ],\n  \"urgency\": \"urgent\"\n}"
+  }
+]

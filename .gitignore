@@ -1,0 +1,8 @@
+data/raw/
+data/index/
+model/dd_finetuned/
+__pycache__/
+*.pyc
+*.pt
+*.bin
+*.pkl
