@@ -2162,3 +2162,47 @@ COMPETITION_RULES = [
 ]
 
 EXTENDED_DD_RULES.extend(COMPETITION_RULES)
+
+# ── 競合解消 v4 ───────────────────────────────────────────────
+FIXUP_RULES = [
+    {
+        "id": "MYOCARDITIS",
+        "min_match": 1,
+        "keywords": ["急性心筋炎", "心筋炎", "ウイルス後 胸痛", "サドルバック ST", "感冒後 ST上昇 若年"],
+        "diagnoses": [
+            {"disease": "急性心筋炎", "icd10": "I40.9", "base_prob": 0.72,
+             "boost_kw": ["感冒後","若年","サドルバック","びまん性ST上昇","TnI軽度"]},
+            {"disease": "急性冠症候群（ACS）", "icd10": "I21.9", "base_prob": 0.15,
+             "boost_kw": ["危険因子","局所性ST変化","TnI著明上昇"]},
+            {"disease": "急性心膜炎", "icd10": "I30.9", "base_prob": 0.10,
+             "boost_kw": ["前傾位で軽減","PR低下","鞍型"]},
+            {"disease": "たこつぼ心筋症", "icd10": "I51.8", "base_prob": 0.03,
+             "boost_kw": ["精神的ストレス後","閉経女性","心尖部風船"]},
+        ],
+        "red_flags": ["心電図モニタリング必須（致死性不整脈リスク）", "心エコーで壁運動異常"],
+        "next_steps": ["12誘導心電図", "採血(TnI/CK-MB)", "心エコー", "心臓MRI(確定診断)"],
+        "scoring_hints": [],
+        "urgency_override": "urgent",
+    },
+    {
+        "id": "SEPTIC_HIP_CHILD",
+        "min_match": 1,
+        "keywords": ["股関節炎 小児", "跛行 発熱 小児", "股関節痛 WBC", "小児 右股関節"],
+        "diagnoses": [
+            {"disease": "化膿性股関節炎（小児）", "icd10": "M00.9", "base_prob": 0.70,
+             "boost_kw": ["発熱","跛行","股関節","WBC高値","CRP高値","小児"]},
+            {"disease": "大腿骨頭壊死（LCP病）", "icd10": "M91.1", "base_prob": 0.15,
+             "boost_kw": ["発熱なし","4-10歳","X線所見"]},
+            {"disease": "単純性股関節炎（一過性）", "icd10": "M65.9", "base_prob": 0.12,
+             "boost_kw": ["軽症","CRP正常","ウイルス感染後"]},
+            {"disease": "化膿性膝関節炎", "icd10": "M00.9", "base_prob": 0.03,
+             "boost_kw": ["膝","腫脹","関節穿刺"]},
+        ],
+        "red_flags": ["診断遅延→骨頭壊死", "Kocher基準(発熱/非荷重/WBC>12000/ESR>40)≥3→緊急手術"],
+        "next_steps": ["股関節超音波", "採血(WBC/ESR/CRP)", "整形外科緊急コンサルト", "関節穿刺培養"],
+        "scoring_hints": ["Kocher基準"],
+        "urgency_override": "immediate",
+    },
+]
+
+EXTENDED_DD_RULES.extend(FIXUP_RULES)

@@ -2,22 +2,22 @@
 Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
-  Easy    : primary=85% / urgency=65% / ICD3=82% / rf_recall=54% / diff_cov=35%
-  Medium  : primary=42% / urgency=59% / ICD3=43% / rf_recall=27% / diff_cov=28%
-  Hard    : primary=36% / urgency=72% / ICD3=34% / rf_recall=24% / diff_cov=16%
+  Easy    : primary=87% / urgency=65% / ICD3=83% / rf_recall=54% / diff_cov=37%
+  Medium  : primary=43% / urgency=59% / ICD3=44% / rf_recall=27% / diff_cov=28%
+  Hard    : primary=38% / urgency=72% / ICD3=36% / rf_recall=24% / diff_cov=16%
 
-Overall: primary=54% / urgency=64% / ICD3=52% / rf_recall=34% / diff_cov=27%
+Overall: primary=55% / urgency=64% / ICD3=54% / rf_recall=34% / diff_cov=28%
 
-Top prediction errors (10 of 93 failed cases):
+Top prediction errors (10 of 90 failed cases):
   1. ギラン・バレー症候群 → predicted as '精査必要' (2 cases)
   2. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
   3. 高血圧性脳症 → predicted as '精査必要' (2 cases)
-  4. 一酸化炭素中毒 → predicted as '悪性高カルシウム血症' (2 cases)
-  5. DRESS症候群 → predicted as '精査必要' (2 cases)
-  6. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
-  7. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
-  8. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
-  9. 化膿性関節炎 → predicted as '精査必要' (1 case)
-  10. 痛風発作 → predicted as '急性膵炎' (1 case)
+  4. DRESS症候群 → predicted as '精査必要' (2 cases)
+  5. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
+  6. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
+  7. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  8. 化膿性関節炎 → predicted as '精査必要' (1 case)
+  9. スティーブンス・ジョンソン症候群 → predicted as '薬疹（多形紅斑型/蕁麻疹型）' (1 case)
+  10. アルコール離脱症候群 → predicted as '急性膵炎' (1 case)
 
 Generated: benchmark_results.json

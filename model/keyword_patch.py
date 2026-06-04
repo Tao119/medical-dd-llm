@@ -333,7 +333,17 @@ KEYWORD_PATCHES.update({
     "AORTA": {"add_keywords": ["血圧左右差 縦隔", "縦隔拡大 胸痛", "血圧左右差 胸痛", "前胸部 縦隔拡大"], "min_match": 1},
     # HHS: HHSルールを別途追加、DKAはmin_match=1維持
     # CO中毒: CO_POISONINGルールを追加済み。HYPERCALCEMIA はmin_match=2で厳格に
-    "HYPERCALCEMIA": {"add_keywords": ["悪性腫瘍 高Ca", "悪性 高カルシウム"], "min_match": 2},
+    "HYPERCALCEMIA": {"add_keywords": ["悪性腫瘍 高Ca", "悪性 高カルシウム", "Ca 12以上", "高Ca 意識障害"], "min_match": 2},
+    # CO中毒: より具体的なキーワードで識別
+    "CO_POISONING": {"add_keywords": ["COHb 25", "COHb 35", "密閉 暖房 意識", "CO暴露", "冬季密閉 頭痛"], "min_match": 1},
+    # 痛風: アルコールだけでなく尿酸値必須
+    "GOUT_ATTACK": {"add_keywords": ["第1趾", "MTP関節", "高尿酸血症 関節炎", "第1趾関節 突然"], "min_match": 1},
+    # アルコール離脱: CIWAキーワード強化
+    "ALCOHOL_WITHDRAWAL": {"add_keywords": ["最終飲酒 振戦", "断酒後 振戦 発汗", "振戦 不安 発汗", "アルコール離脱"], "min_match": 1},
+    # 腸閉塞: 排ガス停止が最特異的
+    "BOWEL_OBSTRUCTION": {"add_keywords": ["排ガス停止", "腸管拡張", "腸雑音亢進 腹部膨満"], "min_match": 1},
+    # PANCREATITIS: 膵炎専用キーワードを追加 (min_match=1維持)
+    "PANCREATITIS": {"add_keywords": ["アミラーゼ 上昇", "膵炎", "リパーゼ 上昇", "膵臓 炎症"], "min_match": 1},
     # SLE: 蝶形発疹・蛋白尿等の特異的キーワードで区別 (min_match=1維持)
     "SLE": {"add_keywords": ["蝶形発疹", "ANA陽性", "補体低下", "タンパク尿 関節炎"], "min_match": 1},
     # PE - 術後SpO2低下パターン (長期臥床+呼吸困難が重複必要)
