@@ -555,3 +555,102 @@ def symptom_check_endpoint(inp: SymptomCheckInput):
             }
     else:
         raise HTTPException(status_code=400, detail=f"Unknown action: {inp.action}. Use 'start' or 'answer'.")
+
+
+# ── 薬剤データベース エンドポイント ────────────────────────────────
+
+from clinical.drug_database import (
+    DRUG_DATABASE, get_drug_info, search_drug,
+    check_drug_interactions_from_db, get_all_drug_classes
+)
+
+
+@app.get("/drugs/{name}")
+def drug_info_endpoint(name: str):
+    """薬剤名で詳細情報を取得（完全一致 / 部分一致 / Fuzzy match）"""
+    info = get_drug_info(name)
+    if info:
+        return {
+            "name_ja": info.name_ja,
+            "name_en": info.name_en,
+            "drug_class": info.drug_class,
+            "indications": info.indications,
+            "adult_doses": info.adult_doses,
+            "contraindications": info.contraindications,
+            "major_interactions": info.major_interactions,
+            "renal_adjustment": info.renal_adjustment,
+            "hepatic_adjustment": info.hepatic_adjustment,
+            "monitoring": info.monitoring,
+            "side_effects": info.side_effects,
+            "notes": info.notes,
+        }
+    # Try fuzzy search
+    results = search_drug(name, max_results=5)
+    if results:
+        return {
+            "message": f"Exact match not found. Suggestions: {[r[0] for r in results]}",
+            "suggestions": [
+                {"name": r[0], "drug_class": r[1].drug_class, "name_en": r[1].name_en}
+                for r in results
+            ],
+        }
+    raise HTTPException(status_code=404, detail=f"Drug not found: {name}")
+
+
+@app.get("/drugs/search/{query}")
+def drug_search_endpoint(query: str, limit: int = 5):
+    """薬剤名・英語名で検索"""
+    results = search_drug(query, max_results=limit)
+    if not results:
+        return {"query": query, "results": [], "message": "No drugs found"}
+    return {
+        "query": query,
+        "results": [
+            {
+                "name_ja": r[1].name_ja,
+                "name_en": r[1].name_en,
+                "drug_class": r[1].drug_class,
+                "indications": r[1].indications[:3],
+            }
+            for r in results
+        ],
+    }
+
+
+class DrugInteractionDBInput(BaseModel):
+    drugs: List[str] = Field(..., example=["ワルファリン", "アスピリン", "アミオダロン"])
+
+
+@app.post("/drugs/interactions_db")
+def drug_interactions_db_endpoint(inp: DrugInteractionDBInput):
+    """薬剤データベースを使った相互作用チェック（詳細版）"""
+    interactions = check_drug_interactions_from_db(inp.drugs)
+    # Find drugs not in DB
+    not_found = [d for d in inp.drugs if get_drug_info(d) is None]
+    return {
+        "drugs_checked": inp.drugs,
+        "drugs_not_in_db": not_found,
+        "interaction_count": len(interactions),
+        "interactions": interactions,
+        "recommendation": "相互作用が見つかった場合は薬剤師・医師に相談してください",
+    }
+
+
+@app.get("/drugs/classes/all")
+def drug_classes_endpoint():
+    """薬剤クラス別一覧を返す"""
+    classes = get_all_drug_classes()
+    return {
+        "total_drugs": len(DRUG_DATABASE),
+        "total_classes": len(classes),
+        "classes": {cls: sorted(drugs) for cls, drugs in sorted(classes.items())},
+    }
+
+
+@app.get("/drugs/list/all")
+def drug_list_all_endpoint():
+    """全薬剤リストを返す"""
+    return {
+        "total": len(DRUG_DATABASE),
+        "drugs": sorted(DRUG_DATABASE.keys()),
+    }
