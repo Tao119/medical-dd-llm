@@ -45,25 +45,22 @@ class DDGenerator:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
     def build_prompt(self, case: dict, retrieved_docs: list[dict]) -> str:
-        context_parts = []
-        for i, doc in enumerate(retrieved_docs, 1):
-            context_parts.append(f"[文献{i}: {doc['source']}]\n{doc['text'][:300]}")
-        context = "\n\n".join(context_parts)
+        # RAGコンテキストは先頭150文字のみ（GPT-2の1024token制限対策）
+        context = ""
+        for doc in retrieved_docs[:1]:
+            context = f"[参考:{doc['source']}]{doc['text'][:150]}"
 
-        case_text = (
-            f"患者情報:\n"
-            f"  主訴: {case.get('chief_complaint', '不明')}\n"
-            f"  症状: {', '.join(case.get('symptoms', []))}\n"
-            f"  バイタル: {case.get('vitals', '記載なし')}\n"
-            f"  既往歴: {case.get('history', 'なし')}\n"
-            f"  年齢・性別: {case.get('demographics', '不明')}"
-        )
-
+        symptoms = ', '.join(case.get('symptoms', [])[:3])
         prompt = (
-            f"{SYSTEM_PROMPT}\n\n"
-            f"## 参考文献\n{context}\n\n"
-            f"## {case_text}\n\n"
-            f"## 鑑別診断 (JSON形式で出力)\n```json\n"
+            f"医師として鑑別診断をJSONで出力してください。\n"
+            f"{context}\n\n"
+            f"主訴:{case.get('chief_complaint','')}"
+            f" 症状:{symptoms}"
+            f" バイタル:{case.get('vitals','')}"
+            f" 既往:{case.get('history','なし')}"
+            f" {case.get('demographics','')}\n\n"
+            f"```json\n"
+            f'{{"primary":{{"disease":"'
         )
         return prompt
 
@@ -84,15 +81,22 @@ class DDGenerator:
         return self.tokenizer.decode(new_ids, skip_special_tokens=True)
 
     def parse_dd(self, raw_output: str) -> dict:
-        json_match = re.search(r"```json\s*(.*?)\s*```", raw_output, re.DOTALL)
-        if not json_match:
-            json_match = re.search(r"(\{.*\})", raw_output, re.DOTALL)
-        if json_match:
-            try:
-                return json.loads(json_match.group(1))
-            except json.JSONDecodeError:
-                pass
-        return {"raw_output": raw_output, "parse_error": True}
+        # プロンプトに先頭部分を付加したので完全なJSONを再構築
+        full = '{"primary":{"disease":"' + raw_output
+        # まず完全なJSONを試みる
+        for pattern in [r"```json\s*(.*?)\s*```", r"(\{.*?\})", r"(\{.*)"]:
+            m = re.search(pattern, full, re.DOTALL)
+            if m:
+                try:
+                    return json.loads(m.group(1) if "```" in pattern else m.group(1))
+                except json.JSONDecodeError:
+                    pass
+        # 部分的なパース: 最低でも primary.disease を抽出
+        partial = {"raw_output": raw_output, "parse_error": True}
+        m = re.search(r'"disease"\s*:\s*"([^"]+)"', full)
+        if m:
+            partial["_extracted_primary"] = m.group(1)
+        return partial
 
     def diagnose(self, case: dict, retrieved_docs: list[dict]) -> dict:
         prompt = self.build_prompt(case, retrieved_docs)

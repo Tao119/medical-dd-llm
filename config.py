@@ -45,6 +45,6 @@ SYSTEM_PROMPT = """あなたは経験豊富な内科医として、根拠に基�
 
 確率の合計が1になるよう調整し、根拠を必ず示してください。"""
 
-RAG_TOP_K = 5
-MAX_NEW_TOKENS = 512
+RAG_TOP_K = 2       # GPT-2の1024token制限に合わせて削減
+MAX_NEW_TOKENS = 300
 TEMPERATURE = 0.1

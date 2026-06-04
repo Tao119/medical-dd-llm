@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from pathlib import Path
 from rag.indexer import MedicalIndexer
 from model.dd_generator import DDGenerator
+from model.dd_template import generate_dd
 from config import BASE_MODEL, EMBED_MODEL, RAG_TOP_K
 
 
@@ -61,7 +62,7 @@ def main():
     parser.add_argument("--interactive", action="store_true")
     args = parser.parse_args()
 
-    model_path = args.model or BASE_MODEL
+    model_path = args.model  # None = template mode
 
     index_dir = Path(args.index)
     if index_dir.exists() and (index_dir / "chunks.json").exists():
@@ -73,7 +74,10 @@ def main():
         indexer = None
         use_rag = False
 
-    generator = DDGenerator(model_path)
+    use_llm = model_path is not None
+    generator = DDGenerator(model_path) if use_llm else None
+    if not use_llm:
+        print("モード: RAG + テンプレートベース鑑別診断（--model でLLMを指定可）")
 
     if args.case:
         with open(args.case, encoding="utf-8") as f:
@@ -82,7 +86,8 @@ def main():
             f"{case.get('chief_complaint', '')} {' '.join(case.get('symptoms', [])[:3])}",
             top_k=RAG_TOP_K
         ) if use_rag else []
-        result = generator.diagnose(case, docs)
+        result = (generator.diagnose(case, docs) if use_llm
+                  else generate_dd(case, docs))
         print_dd(result)
 
     elif args.interactive:
@@ -106,7 +111,8 @@ def main():
             docs = indexer.retrieve(query, top_k=RAG_TOP_K) if use_rag else []
             if docs:
                 print(f"\n[RAG] {len(docs)}件の関連文献を参照中...")
-            result = generator.diagnose(case, docs)
+            result = (generator.diagnose(case, docs) if use_llm
+                      else generate_dd(case, docs))
             print_dd(result)
     else:
         demo_case = {
@@ -121,7 +127,8 @@ def main():
             f"{demo_case['chief_complaint']} {' '.join(demo_case['symptoms'][:3])}",
             top_k=RAG_TOP_K
         ) if use_rag else []
-        result = generator.diagnose(demo_case, docs)
+        result = (generator.diagnose(demo_case, docs) if use_llm
+                  else generate_dd(demo_case, docs))
         print_dd(result)
 
 
