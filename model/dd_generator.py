@@ -1,6 +1,8 @@
 import json
 import re
+import os
 import torch
+from pathlib import Path
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from config import SYSTEM_PROMPT, MAX_NEW_TOKENS, TEMPERATURE
 
@@ -15,11 +17,30 @@ class DDGenerator:
             else:
                 device = "cpu"
         self.device = device
-        print(f"Loading generator: {model_name} on {device}")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name, torch_dtype=torch.float16 if device != "cpu" else torch.float32
-        ).to(device).eval()
+
+        # LoRA アダプタか通常モデルかを判定
+        is_lora = (Path(model_name) / "adapter_config.json").exists()
+
+        if is_lora:
+            # adapter_config.json から base_model を読む
+            import json as _json
+            adapter_cfg = _json.load(open(Path(model_name) / "adapter_config.json"))
+            base_model = adapter_cfg.get("base_model_name_or_path", "rinna/japanese-gpt2-medium")
+            print(f"Loading LoRA adapter from: {model_name} (base: {base_model}) on {device}")
+            self.tokenizer = AutoTokenizer.from_pretrained(base_model)
+            base = AutoModelForCausalLM.from_pretrained(
+                base_model,
+                torch_dtype=torch.float16 if device != "cpu" else torch.float32,
+            )
+            from peft import PeftModel
+            self.model = PeftModel.from_pretrained(base, model_name).to(device).eval()
+        else:
+            print(f"Loading generator: {model_name} on {device}")
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_name, torch_dtype=torch.float16 if device != "cpu" else torch.float32
+            ).to(device).eval()
+
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
