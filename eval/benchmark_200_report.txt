@@ -2,22 +2,22 @@
 Total cases: 200 (Easy:60, Medium:90, Hard:50)
 
 Accuracy by difficulty:
-  Easy    : primary=75% / urgency=63% / ICD3=72% / rf_recall=53% / diff_cov=30%
-  Medium  : primary=29% / urgency=60% / ICD3=30% / rf_recall=24% / diff_cov=22%
-  Hard    : primary=26% / urgency=72% / ICD3=24% / rf_recall=23% / diff_cov=14%
+  Easy    : primary=85% / urgency=65% / ICD3=82% / rf_recall=54% / diff_cov=35%
+  Medium  : primary=42% / urgency=59% / ICD3=43% / rf_recall=27% / diff_cov=28%
+  Hard    : primary=32% / urgency=70% / ICD3=30% / rf_recall=23% / diff_cov=16%
 
-Overall: primary=42% / urgency=64% / ICD3=41% / rf_recall=32% / diff_cov=22%
+Overall: primary=52% / urgency=64% / ICD3=52% / rf_recall=34% / diff_cov=27%
 
-Top prediction errors (10 of 116 failed cases):
-  1. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
-  2. 遺伝性血管性浮腫 → predicted as '精査必要' (2 cases)
-  3. 急性間欠性ポルフィリン症 → predicted as '精査必要' (2 cases)
-  4. 高血圧性脳症 → predicted as '精査必要' (2 cases)
-  5. 熱射病 → predicted as '精査必要' (2 cases)
-  6. 一酸化炭素中毒 → predicted as '悪性高カルシウム血症' (2 cases)
-  7. 下垂体卒中 → predicted as '精査必要' (2 cases)
-  8. DRESS症候群 → predicted as '精査必要' (2 cases)
-  9. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
-  10. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
+Top prediction errors (10 of 95 failed cases):
+  1. ギラン・バレー症候群 → predicted as '精査必要' (2 cases)
+  2. 体位性頻脈症候群 → predicted as '血管迷走神経性失神（VVS）' (2 cases)
+  3. 高血圧性脳症 → predicted as '精査必要' (2 cases)
+  4. 一酸化炭素中毒 → predicted as '悪性高カルシウム血症' (2 cases)
+  5. DRESS症候群 → predicted as '精査必要' (2 cases)
+  6. 溶血性尿毒症症候群 → predicted as '血栓性血小板減少性紫斑病（TTP）' (2 cases)
+  7. ニューモシスチス肺炎 → predicted as '精査必要' (2 cases)
+  8. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  9. 化膿性関節炎 → predicted as '精査必要' (1 case)
+  10. 痛風発作 → predicted as '急性膵炎' (1 case)
 
 Generated: benchmark_results.json
