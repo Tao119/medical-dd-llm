@@ -1,4 +1,4 @@
-data/raw/
+# data/raw/  # medical docs committed
 data/index/
 model/dd_finetuned/
 __pycache__/
