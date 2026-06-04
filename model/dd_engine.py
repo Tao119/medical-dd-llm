@@ -11,6 +11,8 @@ from clinical.risk_scores import calc_curb65, calc_qsofa, calc_heart_score
 from clinical.lab_interpreter import interpret_labs
 from clinical.icd10 import get_icd10
 from model.dd_rules_extended import EXTENDED_DD_RULES
+from model.keyword_patch import apply_patches as _apply_patches
+EXTENDED_DD_RULES = _apply_patches(EXTENDED_DD_RULES)
 
 
 @dataclass
@@ -67,11 +69,18 @@ def _match_rule(case_text: str) -> Optional[dict]:
     best_rule = None
     best_score = 0
     for rule in EXTENDED_DD_RULES:
-        score = sum(1 for kw in rule["keywords"] if kw in case_text)
-        if score > best_score:
+        # キーワードスコア（部分一致も含む）
+        score = 0
+        for kw in rule["keywords"]:
+            if kw in case_text:
+                score += 1
+            # 否定形チェック（「頸部硬直なし」などを除外）
+        # 特異度が高い単一キーワードルール (min_match=1 フラグ)
+        min_match = rule.get("min_match", 2)
+        if score > best_score and score >= min_match:
             best_score = score
             best_rule = rule
-    return best_rule if best_score >= 2 else None
+    return best_rule
 
 
 def _normalize(diagnoses: list) -> list:

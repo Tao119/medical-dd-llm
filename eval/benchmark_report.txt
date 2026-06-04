@@ -2,22 +2,14 @@
 Total cases: 50 (Easy:20, Medium:20, Hard:10)
 
 Accuracy by difficulty:
-  Easy    : primary=70% / urgency=65% / ICD3=60% / rf_recall=42% / diff_cov=20%
-  Medium  : primary=20% / urgency=65% / ICD3=15% / rf_recall=2% / diff_cov=20%
-  Hard    : primary=10% / urgency=70% / ICD3=10% / rf_recall=10% / diff_cov=10%
+  Easy    : primary=100% / urgency=70% / ICD3=90% / rf_recall=48% / diff_cov=35%
+  Medium  : primary=90% / urgency=75% / ICD3=85% / rf_recall=32% / diff_cov=40%
+  Hard    : primary=100% / urgency=90% / ICD3=90% / rf_recall=43% / diff_cov=30%
 
-Overall: primary=38% / urgency=66% / ICD3=32% / rf_recall=20% / diff_cov=18%
+Overall: primary=96% / urgency=76% / ICD3=88% / rf_recall=41% / diff_cov=36%
 
-Top prediction errors (10 of 31 failed cases):
-  1. 全身性エリテマトーデス → predicted as '精査必要' (2 cases)
-  2. 急性虫垂炎 → predicted as '精査必要' (1 case)
-  3. 急性腎盂腎炎 → predicted as '精査必要' (1 case)
-  4. 急性膵炎 → predicted as '精査必要' (1 case)
-  5. 失神 → predicted as '薬剤性低血糖（SU/インスリン）' (1 case)
-  6. 一過性脳虚血発作 → predicted as '精査必要' (1 case)
-  7. 急性冠症候群 → predicted as '精査必要' (1 case)
-  8. くも膜下出血 → predicted as '精査必要' (1 case)
-  9. 粘液水腫性昏睡 → predicted as '精査必要' (1 case)
-  10. 褐色細胞腫 → predicted as '精査必要' (1 case)
+Top prediction errors (2 of 2 failed cases):
+  1. 肺塞栓症 → predicted as '急性心不全（代償不全）' (1 case)
+  2. 甲状腺機能低下症 → predicted as '精査必要' (1 case)
 
 Generated: benchmark_results.json
