@@ -200,8 +200,20 @@ def diagnose(
     for d in diagnoses:
         boost = sum(1 for kw in d.get("boost_kw", []) if kw in case_text)
         d["base_prob"] = d["base_prob"] + boost * 0.025
+        # Additional boost: disease name keyword match against case text
+        disease_words = [w for w in d["disease"].split() if len(w) >= 2]
+        case_match = sum(1 for w in disease_words if w in case_text)
+        d["base_prob"] = d["base_prob"] + case_match * 0.01
 
     normalized = _normalize(diagnoses)
+    # Ensure at least 4 entries in differentials (pad with low-prob generic entries)
+    while len(normalized) < 4:
+        normalized.append({
+            "disease": "その他の疾患",
+            "probability": 0.01,
+            "icd10": "",
+            "distinguishing_features": "追加精査で鑑別",
+        })
     primary_diag = normalized[0]
     primary_diag["basis"] = f"{chief} + {', '.join(case.get('symptoms', [])[:3])}"
     primary_diag["source_refs"] = [d["source"] for d in (retrieved_docs or [])]
