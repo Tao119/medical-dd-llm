@@ -388,10 +388,19 @@ KEYWORD_PATCHES.update({
     "PCP_PNEUMONIA": {"add_keywords": ["CD4 50", "HIV AIDS 肺炎", "免疫不全 肺炎", "日和見感染"], "min_match": 1},
     "ACUTE_PORPHYRIA": {"add_keywords": ["発作性腹痛 神経", "尿の赤色化", "腹痛 神経障害 発作", "ポルフィリア"], "min_match": 1},
     "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["血圧220", "乳頭浮腫 高血圧", "視力障害 血圧200超", "激しい頭痛 視力障害 高血圧"], "min_match": 1},
-    "ECLAMPSIA": {"add_keywords": ["妊娠 頭痛 視野障害", "タンパク尿 血圧上昇 妊娠", "妊娠32週 血圧", "妊娠 けいれん"], "min_match": 2},
+    "ECLAMPSIA": {"add_keywords": ["妊娠 頭痛 視野障害", "タンパク尿 血圧上昇 妊娠", "妊娠32週 血圧", "妊娠 けいれん",
+                                   "子癇前症 妊娠", "妊娠高血圧 蛋白尿"], "min_match": 2},
     "HEAT_STROKE": {"add_keywords": ["無汗", "屋外活動後 意識障害", "体温40.5", "高温 無汗 意識"], "min_match": 1},
     "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["MRI後頭葉", "白質変化 高血圧", "後頭葉白質変化", "可逆性後白質"], "min_match": 1},
     "CAUDA_EQUINA": {"add_keywords": ["鞍状感覚消失", "膀胱直腸障害 両下肢", "両下肢脱力 排尿障害", "馬尾"], "min_match": 1},
+    # 残余フォールバック解消パッチ
+    "WERNICKE_ENCEPHALOPATHY": {"add_keywords": ["外眼筋麻痺", "小脳性歩行失調", "アルコール 眼球運動", "外眼筋 失調"], "min_match": 1},
+    "HYPERTENSIVE_ENCEPHALOPATHY": {"add_keywords": ["血圧220/130", "腎機能障害 高血圧", "乳頭浮腫 視力 高血圧", "治療中断 高血圧"], "min_match": 1},
+    "PCP_PNEUMONIA": {"add_keywords": ["肺胞洗浄液", "LDH高値 低酸素", "HIV陽性 乾性咳嗽", "CD4 80"], "min_match": 1},
+    "GBS": {"add_keywords": ["先行する感染症 反射消失", "上気道炎 反射消失", "胃腸炎 反射消失", "2週間前に上気道炎"], "min_match": 1},
+    # ECLAMPSIA は min_match=2 維持済み（上の定義で設定）
+    "BOWEL_OBSTRUCTION": {"add_keywords": ["小腸拡張", "便秘5日間", "X線小腸拡張", "大腸閉塞", "前立腺肥大 便秘"], "min_match": 1},
+    "AORTIC_ANEURYSM_RUPTURE": {"add_keywords": ["腹部拍動性腫瘤", "背部痛 腹部拍動", "突然の背部痛 低血圧", "拍動性腫瘤触知"], "min_match": 1},
 })
 
 
