@@ -89,7 +89,6 @@ def main():
         fp16=(device == "cuda"),
         logging_steps=5,
         save_strategy="epoch",
-        use_mps_device=(device == "mps"),
         report_to="none",
     )
 
